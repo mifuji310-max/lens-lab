@@ -65,7 +65,7 @@
 <div id="zoomOverlay" class="hidden" style="position:fixed;inset:0;background:#060d19f5;z-index:9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px"><div style="display:flex;justify-content:space-between;width:min(90vw,560px)"><strong>スクリーン拡大観察</strong><button class="action" id="closeOverlay">閉じる ×</button></div><canvas id="zoomCanvas" width="192" height="192" style="width:min(90vw,560px);aspect-ratio:1;object-fit:contain;background:#111e30;border:1px solid #33516c;border-radius:14px"></canvas></div>
 <div id="toast" class="toast hidden"></div>
 <script>"use strict";
-const VERSION = 'v0.1.5';
+const VERSION = 'v0.1.6';
 // 古いiOS Safari（15以前）にはroundRectが無く、描画が止まってしまうため補う
 if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -641,7 +641,16 @@ var LensLab;
                 ctx.fillRect(ox - 1, bodyTop - 2, 2, 5);
             }
             const diameterY = this.ppm * this.verticalRatio * p.diameter / 2;
-            const lensHalf = LensLab.clamp(diameterY * 1.22, 28, 170);
+            let lensHalf = LensLab.clamp(diameterY * 1.22, 28, 170);
+            // 基本3本の光線（教科書の作図）はレンズ直径に関係なくレンズ面で曲がるので、
+            // 光線が当たる高さまでレンズを伸ばして「レンズの外で曲がる」見た目を防ぐ
+            if (s.rayMode === 'basic') {
+                let reach = 3.1;
+                if (Math.abs(o.a - p.focal) > .18)
+                    reach = Math.max(reach, Math.abs(3.1 * p.focal / (o.a - p.focal)));
+                const need = reach * this.ppm * this.verticalRatio + 12;
+                lensHalf = Math.max(lensHalf, Math.min(need, H * .46));
+            }
             ctx.save();
             ctx.shadowColor = '#59d8f5';
             ctx.shadowBlur = 22;
