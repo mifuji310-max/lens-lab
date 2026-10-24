@@ -3,34 +3,178 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="theme-color" content="#0b1425"/>
-<title>レンズLAB | 光のしくみを体験しよう</title>
+<meta name="theme-color" content="#0C1828"/>
+<title>レンズLAB</title>
 <style>
-:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;color:#f1f5ff;background:#0b1425;font-synthesis:none;-webkit-tap-highlight-color:transparent}
-*{box-sizing:border-box}body{margin:0;min-width:320px;background:radial-gradient(circle at 18% -10%,#294b7a 0,transparent 38%),radial-gradient(circle at 92% 0%,#15304f 0,transparent 28%),linear-gradient(180deg,#081221 0%,#0b1425 42%,#0c1730 100%)}button,select,input{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #80ddfa;outline-offset:3px}
-.shell{max-width:1260px;margin:0 auto;padding:16px 16px 68px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0 15px}.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#3dd8df,#79a1ff);display:grid;place-items:center;color:#0d1c39;font-size:25px;font-weight:900;box-shadow:0 10px 24px #0005, inset 0 1px 0 #ffffff55}.brand h1{font-size:20px;letter-spacing:.015em;margin:0}.brand p{font-size:10px;color:#92a7c5;margin:2px 0 0}.top-right{display:flex;gap:8px;align-items:center}.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:50px;background:#16253d;border:1px solid #2b3d59;color:#b8cde3;font-size:11px}.chip:before{content:"";width:6px;height:6px;background:#63d7b2;border-radius:50%}.action{border:1px solid #314461;background:#18283f;color:#dbebfb;border-radius:11px;padding:10px 12px;font-size:12px;font-weight:650}.action:hover{background:#203854}.action.primary{border-color:#51b6ea;background:linear-gradient(135deg,#31b5e1,#5d88e8);color:#06152b;font-weight:800}.action.ghost{background:transparent}.action:disabled{opacity:.32;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap}
-.tabs{display:flex;gap:4px;border:1px solid #243752;background:#101c2f;border-radius:14px;padding:5px;margin-bottom:13px;max-width:440px}.tab{flex:1;border:0;padding:11px 14px;border-radius:10px;color:#91abc9;background:transparent;font-weight:700;font-size:13px}.tab.active{background:#284362;color:#f3faff;box-shadow:0 3px 10px #0003}
-.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(310px,1fr);gap:13px;align-items:start}.column{min-width:0;display:flex;flex-direction:column;gap:13px}.panel{background:linear-gradient(180deg,#12223a 0%,#0f1c31 100%);border:1px solid #2d4667;border-radius:21px;box-shadow:0 14px 36px #04091366, inset 0 1px 0 #ffffff0a;overflow:hidden;backdrop-filter:blur(8px)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 12px}.panel-title{font-size:14px;font-weight:800;letter-spacing:.02em}.muted{color:#8fa6c5;font-size:11px}.view-switch,.seg{display:flex;gap:3px;background:#0b182c;border:1px solid #253a55;padding:3px;border-radius:11px}.view-switch button,.seg button{background:transparent;color:#95a9c7;border:0;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;white-space:nowrap}.view-switch button.active,.seg button.active{background:#2c4967;color:white;box-shadow:0 2px 9px #0005}
-.stage{position:relative;margin:0 14px;background:radial-gradient(circle at 50% 42%,#18365a 0,#101d31 62%,#0b1729 100%);border:1px solid #325879;border-radius:18px;overflow:hidden;height:352px;touch-action:none;user-select:none;cursor:grab;box-shadow:inset 0 1px 0 #ffffff10, inset 0 0 80px #59c9ff08, 0 10px 28px #02101f55}.stage:active{cursor:grabbing}.stage canvas{width:100%;height:100%;display:block;touch-action:none}.stage-helper{position:absolute;left:14px;bottom:42px;background:#08172abf;border:1px solid #3d6488;border-radius:50px;padding:7px 12px;color:#c4d9ef;font-size:10px;pointer-events:none;backdrop-filter:blur(8px);box-shadow:0 6px 16px #0005}.stage-note{position:absolute;bottom:9px;left:10px;right:10px;display:flex;justify-content:space-between;gap:6px;pointer-events:none;color:#9bb7d0;font-size:10px;text-shadow:0 1px 4px #061529}.stage-note span{background:#0c1b2fcc;border:1px solid #27435f;border-radius:8px;padding:4px 7px;backdrop-filter:blur(8px)}.stage-tools{display:flex;justify-content:space-between;gap:8px;padding:10px 12px 13px;align-items:center;flex-wrap:wrap}.small-tools{display:flex;align-items:center;gap:6px}.mini{border:1px solid #395678;background:linear-gradient(180deg,#1b3150,#162845);color:#d7e8f8;border-radius:10px;padding:8px 10px;font-size:11px;min-height:32px;font-weight:700;box-shadow:inset 0 1px 0 #ffffff10}.mini.selected{border-color:#50c4ed;color:#92e6ff}.mini.active{background:#225979}.status-inline{color:#85b4d3;font-size:11px}
-.viewer{padding:0 13px 13px}.viewer-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:11px}.screen-box{position:relative;min-width:0;aspect-ratio:1.25/1;background:radial-gradient(circle at 50% 42%,#182b46,#081426 76%);border:1px solid #31516f;border-radius:16px;display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 1px 0 #ffffff0d, inset 0 0 50px #51c9ff08}.screen-box canvas{display:block;width:100%;height:100%;object-fit:contain;image-rendering:auto}.screen-zoom{position:absolute;right:7px;top:7px;border:1px solid #38536c;border-radius:7px;background:#13283bad;color:#c9eaff;padding:4px 6px;font-size:11px}.data-card{display:flex;flex-direction:column;gap:6px;justify-content:center}.metric{display:flex;justify-content:space-between;align-items:center;gap:7px;font-size:11px;padding:5px 0;border-bottom:1px solid #253951}.metric span{color:#90a9c8}.metric strong{font-variant-numeric:tabular-nums;font-size:13px}.focus-pill{font-size:11px;display:inline-block;border:1px solid #2e7e75;color:#94efd2;background:linear-gradient(180deg,#133d37,#12332f);padding:7px 10px;border-radius:10px;font-weight:800;box-shadow:inset 0 1px 0 #ffffff10}.focus-pill.out{color:#f6c493;border-color:#8a5f34;background:linear-gradient(180deg,#4a3220,#382416)}.focus-pill.virtual{color:#d8b6ff;border-color:#7a58b7;background:linear-gradient(180deg,#3b2b57,#2e2145)}.viewer-detail{margin-top:10px;font-size:11px;color:#9db6d4;line-height:1.7}
-.controls{padding:13px 15px 15px}.control-line{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0}.control-label{font-size:12px;font-weight:700}.row-group{display:flex;gap:6px;flex-wrap:wrap}.field{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0 7px;font-size:12px}.field label{font-weight:700}.field strong{font-size:14px;font-variant-numeric:tabular-nums;color:#b1e8fa}.range{width:100%;accent-color:#57c3e5;cursor:pointer}.tiny{font-size:10px;color:#819cb7}.divider{height:1px;background:#293d54;margin:13px 0}.select{background:#172941;border:1px solid #355271;color:#f0f5fe;border-radius:9px;padding:9px;max-width:100%;font-size:12px}.expander{width:100%;text-align:left;background:transparent;color:#b9d0e6;border:0;padding:6px 0;font-size:12px;font-weight:700}.hidden{display:none!important}.readout{background:linear-gradient(180deg,#0d1c31,#0b1729);padding:11px 12px;border-radius:13px;border:1px solid #2e4765;font-size:12px;line-height:1.75;box-shadow:inset 0 1px 0 #ffffff08}.formula{font-family:Georgia,serif;color:#d6ecff;font-size:17px}.drawer{margin-top:11px}.footer{font-size:11px;color:#839ab5;line-height:1.7;text-align:center;padding:17px}
-.notice{display:flex;gap:10px;align-items:flex-start;background:linear-gradient(180deg,#173148,#11253b);border:1px solid #356a84;border-radius:14px;margin:12px 0 0;padding:12px 13px;font-size:12px;color:#caeaf1;line-height:1.55;box-shadow:0 8px 24px #02091333}.notice .dismiss{margin-left:auto;flex:0 0 auto;border:0;background:transparent;color:#83a9c3;font-size:15px}.mission-panel{padding:14px 15px}.mission-list{display:flex;gap:7px;overflow-x:auto;padding-bottom:5px}.mission-btn{border:1px solid #334b6a;background:#162940;color:#a9bed8;padding:8px 12px;border-radius:10px;font-size:11px;white-space:nowrap}.mission-btn.active{color:white;background:#29516f;border-color:#4da5ce}.mission-btn.done{border-color:#276c64}.mission-title{margin:12px 0 6px;font-size:15px;font-weight:800}.mission-desc{font-size:12px;color:#a8c0d9;line-height:1.7;margin:0 0 10px}.mission-progress{font-size:11px;color:#85b4d3}.mission-result{background:#12382f;border:1px solid #367d69;color:#aaf9d7;border-radius:10px;padding:10px 11px;font-size:12px;margin:9px 0}.mission-hint{background:#23334a;color:#c5dcf1;border:1px solid #3a526e;border-radius:10px;font-size:11px;padding:10px 11px;line-height:1.7;margin:10px 0}.toast{position:fixed;z-index:5;bottom:17px;left:50%;transform:translateX(-50%);background:#1c4e43;color:#c5ffe9;border:1px solid #4aad8c;box-shadow:0 8px 35px #0008;padding:12px 17px;border-radius:12px;font-size:13px;max-width:90vw;pointer-events:none}
+/* まなびラボ共通の形（見出し・枠線・角の丸み・アンバーの強調）を、光の実験に合う暗い画面で使う */
+:root{
+  --bg:#0C1828; --grid:#15263B; --panel:#12223A; --panel-2:#0E1C30;
+  --line:#2A4362; --line-strong:#3E5F84;
+  --ink:#EAF1F8; --ink-soft:#93A9C2; --ink-faint:#6F87A3;
+  --amber:#E0982C; --amber-soft:#3A2A14; --amber-ink:#F4C27A;
+  --light:#7FD8F0;
+  --ray-par:#F5C451; --ray-ctr:#7FD8F0; --ray-foc:#F08F7A; --virt:#C9A2FF;
+  --mono:ui-monospace,"SF Mono",Consolas,"Courier New",monospace;
+  --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;
+  font-family:var(--gothic);color:var(--ink);background:var(--bg);font-synthesis:none;-webkit-tap-highlight-color:transparent;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-width:320px;background-color:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+button,select,input{font:inherit}
+button{cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.hidden{display:none!important}
 
-.ray-legend{margin-top:10px;background:linear-gradient(180deg,#0f1d31,#0c1729);border:1px solid #2d4864;border-radius:13px;padding:10px 12px;color:#b7cee6;font-size:11px;line-height:1.65}.ray-legend .sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}.ray-legend .y{background:#e3c66d}.ray-legend .b{background:#7ed8ea}.ray-legend .o{background:#eda083}.ray-legend .m{background:#7ed8ea}.ray-legend strong{color:#eff7ff}.eyebrow{display:inline-block;padding:3px 7px;border-radius:999px;border:1px solid #32557a;background:#12263e;color:#a9cdec;font-size:10px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:5px}
-@media(max-width:820px){.shell{padding:11px 11px 45px}.layout{display:flex;flex-direction:column;align-items:stretch}.column{display:contents}#experimentPanel{order:1}#viewerPanel{order:2}#suggestion{order:3}#detailsPanel{order:4}.stage{height:clamp(238px,64vw,330px)}.top{padding-bottom:12px}.panel-head{padding:12px 13px 10px}}
-@media (max-width:400px){.brand h1{font-size:18px}.stage{height:250px}.small-tools{gap:4px}.mini{padding:7px 6px;font-size:10px}.stage-helper{font-size:9px}.chip{display:none}.viewer-grid{grid-template-columns:1fr 1fr}.metric{font-size:10px}.metric strong{font-size:11px}.view-switch button{padding:8px 10px}}
-@media (max-height:480px) and (orientation:landscape){.column{display:flex}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(215px,1fr);gap:9px}.shell{padding:7px 10px 30px}.top{padding-bottom:7px}.brand h1{font-size:16px}.brand p{display:none}.logo{width:32px;height:32px;border-radius:9px;font-size:18px}.tabs{margin-bottom:8px;padding:3px}.tab{padding:6px}.column{gap:9px}.stage{height:calc(100vh - 143px);min-height:170px;margin:0 9px}.stage-tools{padding:6px 8px}.panel-head{padding:8px 11px 7px}.viewer-grid{grid-template-columns:1fr;gap:6px}.screen-box{aspect-ratio:1.8/1;max-height:120px}.controls{padding:7px 12px}.field{margin:6px 0 2px}.divider{margin:5px 0}.footer{display:none}}
-.panel-head.slim{padding:10px 14px 9px}.seg button.selected{background:#2c4967;color:#fff;box-shadow:0 2px 9px #0005}
-#scaleStatus{display:none}.head-tools{display:flex;gap:8px;align-items:center}.stage-corner{display:flex;gap:5px}.stage-corner button{width:36px;height:36px;border-radius:10px;border:1px solid #3d6488;background:#0b1a2ecc;color:#cfe6f8;font-size:17px;line-height:1;backdrop-filter:blur(6px)}.stage-corner button:disabled{opacity:.35}
-.dock{display:flex;flex-direction:column;gap:7px;padding:10px 12px 12px}.dock-row{display:flex;align-items:center;gap:7px;min-width:0}.dock-row .grow{flex:1;min-width:0}.dock-row .seg button{flex:1;padding:8px 4px}.dock-label{flex:0 0 46px;font-size:11px;font-weight:800;color:#9fbad6}.dock-value{flex:0 0 62px;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;color:#b1e8fa}.step{flex:0 0 42px;min-height:38px;border:1px solid #395678;background:linear-gradient(180deg,#1b3150,#162845);color:#d7e8f8;border-radius:10px;font-size:13px;font-weight:800}
-details.controls summary{cursor:pointer;font-size:13px;font-weight:800;color:#b9d0e6;padding:2px 0;list-style:none}details.controls summary::-webkit-details-marker{display:none}details.controls summary:before{content:"▸ ";color:#6fc7e8}details.controls[open] summary:before{content:"▾ "}details.controls[open] summary{margin-bottom:8px}.check{font-size:12px;display:flex;gap:9px;align-items:center;margin:9px 0}
-@media (pointer:coarse){.step{min-height:42px}.dock-row .seg button{padding:10px 4px}.view-switch button{padding:9px 12px}.range{height:30px}}
-@media(min-width:821px){.stage{height:430px}.viewer-grid{grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}}
+/* ---------- 見出し（まなびラボと同じ形） ---------- */
+.shell{max-width:1260px;margin:0 auto;padding:16px calc(16px + env(safe-area-inset-right)) calc(56px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left))}
+.back{display:inline-block;font-size:13px;color:var(--ink-soft);text-decoration:none;margin-bottom:8px}
+.back:hover{color:var(--ink);text-decoration:underline}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.brand{min-width:0}
+.brand h1{font-size:25.5px;margin:0;letter-spacing:.08em;font-weight:700}
+.brand h1 .en{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;color:var(--ink-soft);font-weight:400;margin-top:4px}
+.brand p{font-size:13.5px;color:var(--ink-soft);margin:8px 0 0}
+.top-right{display:flex;gap:8px;align-items:center}
+
+/* ---------- ボタン ---------- */
+.action{border:1.5px solid var(--line-strong);background:var(--panel);color:var(--ink);border-radius:3px;padding:9px 14px;font-size:13px;font-weight:700;min-height:40px}
+.action:hover{border-color:var(--ink-soft)}
+.action.primary{background:var(--amber-soft);border-color:var(--amber);color:var(--amber-ink)}
+.action.ghost{background:transparent}
+.action:disabled{opacity:.32;cursor:not-allowed}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+
+.tabs{display:flex;border:1.5px solid var(--ink-soft);border-radius:3px;overflow:hidden;margin-bottom:13px;max-width:400px}
+.tab{flex:1;border:0;padding:10px 14px;color:var(--ink-soft);background:transparent;font-weight:700;font-size:14px;min-height:44px}
+.tab+.tab{border-left:1.5px solid var(--ink-soft)}
+.tab.active{background:var(--ink);color:var(--bg)}
+
+.view-switch,.seg{display:flex;border:1.5px solid var(--line-strong);border-radius:3px;overflow:hidden}
+.view-switch button,.seg button{background:transparent;color:var(--ink-soft);border:0;padding:8px 12px;font-size:12.5px;font-weight:700;white-space:nowrap;min-height:36px}
+.view-switch button+button,.seg button+button{border-left:1.5px solid var(--line-strong)}
+.view-switch button.active,.seg button.active,.seg button.selected{background:var(--ink);color:var(--bg)}
+
+/* ---------- パネル ---------- */
+.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(310px,1fr);gap:14px;align-items:start}
+.column{min-width:0;display:flex;flex-direction:column;gap:14px}
+.panel{background:var(--panel);border:1.5px solid var(--line-strong);border-radius:3px;overflow:hidden}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 12px}
+.panel-head.slim{padding:10px 14px 9px}
+.panel-title{font-size:14px;font-weight:700;letter-spacing:.12em;color:var(--ink-soft)}
+.muted{color:var(--ink-soft);font-size:11.5px}
+.eyebrow{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;padding:2px 7px;border:1px solid var(--line-strong);border-radius:2px;color:var(--ink-soft);margin-bottom:6px;text-transform:uppercase}
+.head-tools{display:flex;gap:8px;align-items:center}
+.stage-corner{display:flex;gap:5px}
+.stage-corner button{width:36px;height:36px;border-radius:3px;border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);font-size:17px;line-height:1}
+.stage-corner button:disabled{opacity:.35}
+
+/* ---------- 実験エリア（暗室） ---------- */
+.stage{position:relative;margin:0 12px;background:radial-gradient(ellipse at 50% 45%,#13294A 0,#0A1626 70%);border:1.5px solid var(--line-strong);border-radius:3px;overflow:hidden;height:352px;touch-action:none;user-select:none;cursor:grab}
+.stage:active{cursor:grabbing}
+.stage canvas{width:100%;height:100%;display:block;touch-action:none}
+.stage-helper{position:absolute;left:10px;bottom:38px;background:#0A1626d9;border:1px solid var(--line-strong);border-radius:2px;padding:5px 10px;color:var(--ink-soft);font-size:11px;pointer-events:none}
+.stage-note{position:absolute;bottom:9px;left:10px;right:10px;display:flex;justify-content:space-between;gap:6px;pointer-events:none;color:var(--ink-soft);font-size:10.5px}
+.stage-note span{background:#0A1626d9;border:1px solid var(--line);border-radius:2px;padding:3px 7px;font-family:var(--mono);letter-spacing:.06em}
+#scaleStatus{display:none}
+
+.dock{display:flex;flex-direction:column;gap:8px;padding:12px}
+.dock-row{display:flex;align-items:center;gap:8px;min-width:0}
+.dock-row .grow{flex:1;min-width:0}
+.dock-row .seg button{flex:1;padding:8px 4px}
+.dock-label{flex:0 0 48px;font-size:12px;font-weight:700;color:var(--ink-soft)}
+.dock-value{flex:0 0 66px;text-align:right;font-family:var(--mono);font-size:14px;color:var(--ink)}
+.step{flex:0 0 42px;min-height:38px;border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);border-radius:3px;font-size:13px;font-weight:700}
+.step:hover{border-color:var(--ink-soft)}
+
+/* スライダー（まなびラボと同じ丸いつまみ） */
+.range{width:100%;height:32px;margin:0;background:transparent;-webkit-appearance:none;appearance:none;touch-action:pan-y;cursor:pointer}
+.range::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:#22385A;border:1px solid var(--line-strong)}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-11px;border-radius:50%;background:var(--amber);border:2.5px solid var(--bg);box-shadow:0 0 0 1.5px var(--amber)}
+.range::-moz-range-track{height:6px;border-radius:3px;background:#22385A;border:1px solid var(--line-strong)}
+.range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--amber);border:2.5px solid var(--bg)}
+
+/* ---------- スクリーン像 ---------- */
+.viewer{padding:0 13px 13px}
+.viewer-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:11px}
+.screen-box{position:relative;min-width:0;aspect-ratio:1.25/1;background:#070F1B;border:1.5px solid var(--line-strong);border-radius:3px;display:grid;place-items:center;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.screen-box.in-focus{border-color:var(--amber);box-shadow:0 0 0 3px #E0982C33,0 0 22px #E0982C40}
+.screen-box.pulse{animation:focusPulse .7s ease-out}
+@keyframes focusPulse{0%{box-shadow:0 0 0 0 #E0982Caa}100%{box-shadow:0 0 0 14px #E0982C00}}
+.screen-box canvas{display:block;width:100%;height:100%;object-fit:contain}
+.screen-zoom{position:absolute;right:7px;top:7px;border:1px solid var(--line-strong);border-radius:2px;background:#0A1626cc;color:var(--ink);padding:4px 7px;font-size:12px}
+.data-card{display:flex;flex-direction:column;gap:6px;justify-content:center}
+.metric{display:flex;justify-content:space-between;align-items:center;gap:7px;font-size:11.5px;padding:5px 0;border-bottom:1px solid var(--line)}
+.metric span{color:var(--ink-soft)}
+.metric strong{font-family:var(--mono);font-size:13px;font-weight:600}
+.focus-pill{font-size:12px;display:inline-block;border:1.5px solid var(--amber);color:var(--amber-ink);background:var(--amber-soft);padding:7px 10px;border-radius:3px;font-weight:700}
+.focus-pill.out{color:var(--ink-soft);border-color:var(--line-strong);background:transparent}
+.focus-pill.virtual{color:var(--virt);border-color:#6A55A0;background:#241B3A}
+.viewer-detail{margin-top:10px;font-size:12px;color:var(--ink-soft);line-height:1.7}
+.mini{border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);border-radius:3px;padding:8px 10px;font-size:12px;min-height:34px;font-weight:700}
+.mini:disabled{opacity:.35;cursor:not-allowed}
+.readout{background:var(--panel-2);padding:11px 12px;border-radius:3px;border:1px solid var(--line);font-size:12px;line-height:1.75}
+.formula{font-family:var(--mono);color:var(--ink);font-size:16px}
+
+/* ---------- 詳しい設定・案内 ---------- */
+.controls{padding:13px 15px 15px}
+.control-line{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0}
+.control-label{font-size:12.5px;font-weight:700;color:var(--ink-soft)}
+.field{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0 4px;font-size:12.5px}
+.field label{font-weight:700}
+.field strong{font-family:var(--mono);font-size:14px}
+.tiny{font-size:11px;color:var(--ink-faint);line-height:1.6}
+.divider{height:1px;background:var(--line);margin:13px 0}
+details.controls summary{cursor:pointer;font-size:13.5px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em;padding:2px 0;list-style:none}
+details.controls summary::-webkit-details-marker{display:none}
+details.controls summary:before{content:"▸ ";color:var(--amber)}
+details.controls[open] summary:before{content:"▾ "}
+details.controls[open] summary{margin-bottom:8px}
+.check{font-size:13px;display:flex;gap:9px;align-items:center;margin:10px 0}
+.check input{width:18px;height:18px;accent-color:var(--amber)}
+
+.notice{display:flex;gap:10px;align-items:flex-start;background:var(--amber-soft);border:1.5px solid var(--amber);border-radius:3px;padding:11px 13px;font-size:13px;color:#F8DDB4;line-height:1.6}
+.notice>span:first-child{color:var(--amber)}
+.notice .dismiss{margin-left:auto;flex:0 0 auto;border:0;background:transparent;color:var(--amber-ink);font-size:16px;min-width:32px;min-height:32px}
+
+.ray-legend{margin-top:8px;background:var(--panel-2);border:1px solid var(--line);border-radius:3px;padding:10px 12px;color:var(--ink-soft);font-size:12px;line-height:1.75}
+.ray-legend .sw{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:7px;vertical-align:middle}
+.ray-legend .y{background:var(--ray-par)}.ray-legend .b{background:var(--ray-ctr)}.ray-legend .o{background:var(--ray-foc)}.ray-legend .m{background:var(--light)}
+.ray-legend strong{color:var(--ink)}
+
+/* ---------- ミッション ---------- */
+.mission-panel{padding:14px 15px;margin-bottom:13px}
+.mission-list{display:flex;gap:7px;overflow-x:auto;padding-bottom:5px}
+.mission-btn{border:1.5px solid var(--line-strong);background:transparent;color:var(--ink-soft);padding:8px 12px;border-radius:3px;font-size:12px;white-space:nowrap;min-height:36px}
+.mission-btn.active{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.mission-btn.done{border-color:var(--amber)}
+.mission-title{margin:12px 0 6px;font-size:16px;font-weight:700;letter-spacing:.04em}
+.mission-desc{font-size:13px;color:var(--ink-soft);line-height:1.7;margin:0 0 10px}
+.mission-progress{font-size:11.5px;color:var(--ink-faint);font-family:var(--mono);letter-spacing:.04em}
+.mission-result{background:var(--amber-soft);border:1.5px solid var(--amber);color:#F8DDB4;border-radius:3px;padding:10px 11px;font-size:13px;margin:9px 0}
+.mission-hint{background:var(--panel-2);color:var(--ink);border:1px solid var(--line-strong);border-radius:3px;font-size:12.5px;padding:10px 11px;line-height:1.7;margin:10px 0}
+
+.toast{position:fixed;z-index:5;bottom:calc(17px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);border-radius:3px;padding:11px 17px;font-size:13.5px;font-weight:700;max-width:90vw;pointer-events:none;box-shadow:0 8px 30px #0008}
+.footer{font-size:11.5px;color:var(--ink-faint);line-height:1.7;padding:18px 4px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer .ver{font-family:var(--mono)}
+
+/* ---------- 画面幅ごとの調整 ---------- */
+@media(max-width:820px){.shell{padding-top:11px;padding-bottom:45px}.layout{display:flex;flex-direction:column;align-items:stretch}.column{display:contents}#experimentPanel{order:1}#suggestion{order:2}#viewerPanel{order:3}#detailsPanel{order:4}.stage{height:clamp(240px,64vw,330px)}.panel-head{padding:12px 13px 10px}}
+@media(max-width:400px){.brand h1{font-size:22px}.stage{height:250px;margin:0 8px}.dock{padding:10px 8px}.dock-label{flex-basis:40px;font-size:11px}.dock-value{flex-basis:58px;font-size:12.5px}.stage-helper{font-size:10px}.viewer-grid{grid-template-columns:1fr 1fr}.metric{font-size:10.5px}.metric strong{font-size:11.5px}.view-switch button{padding:8px 10px}}
+@media(max-height:480px) and (orientation:landscape){.column{display:flex}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(215px,1fr);gap:9px}.shell{padding-top:7px;padding-bottom:30px}.top{margin-bottom:7px}.brand h1{font-size:18px}.brand h1 .en,.brand p,.back{display:none}.tabs{margin-bottom:8px}.tab{padding:5px;min-height:34px}.column{gap:9px}.stage{height:calc(100vh - 143px);min-height:170px;margin:0 9px}.panel-head{padding:8px 11px 7px}.viewer-grid{grid-template-columns:1fr;gap:6px}.screen-box{aspect-ratio:1.8/1;max-height:120px}.controls{padding:7px 12px}.field{margin:6px 0 2px}.divider{margin:5px 0}.footer{display:none}}
+@media(pointer:coarse){.step{min-height:42px}.dock-row .seg button{padding:10px 4px}.view-switch button{padding:9px 12px}}
+@media(min-width:821px){.stage{height:440px}}
+@media(prefers-reduced-motion:reduce){.screen-box.pulse{animation:none}}
 </style>
 </head>
 <body>
 <main class="shell">
-<header class="top"><div class="brand"><div class="logo">◉</div><div><h1>レンズLAB <span id="versionLabel" style="font-size:10px;color:#94b7d5;font-weight:500"></span></h1><p>光を動かす。しくみが見える。</p></div></div><div class="top-right"><button class="action ghost" id="resetBtn" title="実験条件を初期化">↺ リセット</button></div></header>
+<a class="back" href="https://mifuji310-max.github.io/manabi-lab/">← まなびラボ</a>
+<header class="top"><div class="brand"><h1>レンズLAB<span class="en">LENS LAB</span></h1><p>ろうそくを動かして、像がどこにできるか確かめよう。</p></div><div class="top-right"><button class="action ghost" id="resetBtn" title="実験条件を初期化">↺ リセット</button></div></header>
 <div class="tabs"><button id="freeTab" class="tab active">✦ 自由実験</button><button id="missionTab" class="tab">◎ ミッション</button></div>
 <div id="missionPanel" class="panel mission-panel hidden"><div class="mission-progress" id="missionProgress">すべてのミッションに最初から挑戦できます</div><div id="missionList" class="mission-list"></div><div class="mission-title" id="missionTitle"></div><p class="mission-desc" id="missionDesc"></p><div class="actions"><button class="action" id="missionHintBtn">ヒントを見る</button><button class="action" id="missionObserveBtn">観察した ✓</button><button class="action" id="missionRevealBtn">結果を表示</button><button class="action ghost" id="exitMissionBtn">自由実験に戻る</button></div><div id="missionExtra"></div></div>
 <div class="layout">
@@ -54,26 +198,26 @@ details.controls summary{cursor:pointer;font-size:13px;font-weight:800;color:#b9
     <div class="control-line"><span class="control-label">学習情報の表示</span></div><div class="seg"><button id="levelSimple" class="active" style="flex:1">シンプル</button><button id="levelNumeric" style="flex:1">数値あり</button><button id="levelAdvanced" style="flex:1">発展</button></div>
     <div id="advancedArea" class="hidden"><div class="field"><label for="diameterRange">レンズ直径 D</label><strong id="diameterValue">4.0 cm</strong></div><input class="range" type="range" id="diameterRange" min="1" max="8" step="0.5" value="4"/><div class="tiny">直径を大きくすると、ピントずれのぼけが大きくなります。理想像の位置は変わりません。</div></div>
     <div class="divider"></div>
-    <label class="check"><input type="checkbox" id="showFoci"/> 焦点 F・2F を表示する</label>
+    <label class="check"><input type="checkbox" id="showFoci" checked/> 焦点 F・2F を表示する</label>
     <label class="check"><input type="checkbox" id="suggestionsEnabled" checked/> 自由実験でヒントを表示</label>
     <label class="check"><input type="checkbox" id="teacherMode"/> 授業モード（自動的な答え・提案を隠す）</label>
     <p class="tiny">実験条件・設定・ミッション達成記録はこのブラウザに保存されます。</p>
   </details>
 </section>
 <aside class="column">
-  <section class="panel" id="viewerPanel"><div class="panel-head"><div><div class="eyebrow">Screen View</div><div class="panel-title">スクリーンに映る像</div><span class="muted" id="screenSubtitle">スクリーンを正面から見た様子</span></div><button class="mini" id="toggleVirtualBtn" disabled>レンズ越し観察</button></div>
+  <section class="panel" id="viewerPanel"><div class="panel-head"><div><div class="eyebrow">Screen</div><div class="panel-title">スクリーンに映る像</div><span class="muted" id="screenSubtitle">スクリーンを正面から見た様子</span></div><button class="mini" id="toggleVirtualBtn" disabled>レンズ越し観察</button></div>
     <div class="viewer"><div class="viewer-grid"><div class="screen-box"><canvas id="screenCanvas" width="192" height="192" aria-label="スクリーン上の像"></canvas><button id="screenZoomBtn" class="screen-zoom">⛶</button></div><div class="data-card"><div id="focusPill" class="focus-pill out">◌ ピントがずれている</div><div id="shortDescribe" class="muted" style="line-height:1.55">スクリーンを移動すると、ぼけ方が変わります。</div><div class="metric" id="metricA"><span>物体距離</span><strong id="aValue">30.0 cm</strong></div><div class="metric" id="metricS"><span>スクリーン距離</span><strong id="sValue">18.0 cm</strong></div><div class="metric" id="metricF"><span>焦点距離</span><strong id="miniF">10.0 cm</strong></div><div class="metric" id="metricB"><span>像距離</span><strong id="bValue">15.0 cm</strong></div><div class="metric" id="metricM"><span>倍率</span><strong id="mValue">0.50 倍</strong></div></div></div>
     <div class="viewer-detail" id="screenExplain">スクリーンを左に少し動かすとピントが合います。</div>
     <div id="formulaPanel" class="readout hidden" style="margin-top:10px"><div class="formula">1/a + 1/b = 1/f</div><div id="formulaNumbers"></div><div class="tiny">理想薄レンズ・円形開口による幾何光学モデル。波動光学や収差は含みません。</div></div></div>
   </section>
 </aside>
 </div>
-<div class="footer">レンズLAB <span id="versionFooter"></span> —理想薄レンズによる学習用シミュレーション。光線の再生は光路を示す演出であり、光速を表すものではありません。</div>
+<div class="footer"><span>理想薄レンズによる学習用シミュレーション。光線の再生は光路を示す演出であり、光速を表すものではありません。</span><span class="ver">レンズLAB <span id="versionFooter"></span><span id="versionLabel" hidden></span></span></div>
 </main>
-<div id="zoomOverlay" class="hidden" style="position:fixed;inset:0;background:#060d19f5;z-index:9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px"><div style="display:flex;justify-content:space-between;width:min(90vw,560px)"><strong>スクリーン拡大観察</strong><button class="action" id="closeOverlay">閉じる ×</button></div><canvas id="zoomCanvas" width="192" height="192" style="width:min(90vw,560px);aspect-ratio:1;object-fit:contain;background:#111e30;border:1px solid #33516c;border-radius:14px"></canvas></div>
+<div id="zoomOverlay" class="hidden" style="position:fixed;inset:0;background:#070F1Bf5;z-index:9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px"><div style="display:flex;justify-content:space-between;width:min(90vw,560px)"><strong>スクリーン拡大観察</strong><button class="action" id="closeOverlay">閉じる ×</button></div><canvas id="zoomCanvas" width="192" height="192" style="width:min(90vw,560px);aspect-ratio:1;object-fit:contain;background:#070F1B;border:1.5px solid #3E5F84;border-radius:3px"></canvas></div>
 <div id="toast" class="toast hidden"></div>
 <script>"use strict";
-const VERSION = 'v0.2.0';
+const VERSION = 'v0.3.0';
 // 古いiOS Safari（15以前）にはroundRectが無く、描画が止まってしまうため補う
 if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -461,7 +605,7 @@ var LensLab;
             const first = (this.panX % gridPx + gridPx) % gridPx;
             ctx.strokeStyle = '#8ab2d0';
             ctx.lineWidth = .55;
-            ctx.globalAlpha = .08;
+            ctx.globalAlpha = .1;
             for (let x = first; x < W; x += gridPx) {
                 ctx.beginPath();
                 ctx.moveTo(x, 0);
@@ -483,22 +627,29 @@ var LensLab;
                         const wx = p.lensX + sign * p.focal * mul, x = this.worldX(wx);
                         if (x < -20 || x > W + 20)
                             continue;
+                        // 焦点Fは光軸上のアンバーの点＋ラベルで、2Fは控えめな目盛りで示す
                         ctx.save();
-                        ctx.strokeStyle = mul === 1 ? '#7bd9ff' : '#5eaee0';
-                        ctx.lineWidth = 1.6;
+                        const isF = mul === 1, label = isF ? 'F' : '2F', w = isF ? 22 : 26;
+                        if (isF) {
+                            ctx.fillStyle = '#E0982C';
+                            ctx.shadowColor = '#E0982C';
+                            ctx.shadowBlur = 8;
+                            ctx.beginPath();
+                            ctx.arc(x, axisY, 4.5, 0, Math.PI * 2);
+                            ctx.fill();
+                            ctx.shadowBlur = 0;
+                        }
+                        else {
+                            strokeLine(ctx, x, axisY - 7, x, axisY + 7, '#93A9C2', 1.5);
+                        }
+                        ctx.fillStyle = isF ? '#3A2A14' : '#0C1828';
+                        ctx.strokeStyle = isF ? '#E0982C' : '#3E5F84';
+                        ctx.lineWidth = 1.2;
                         ctx.beginPath();
-                        ctx.moveTo(x, axisY - 10);
-                        ctx.lineTo(x, axisY + 10);
-                        ctx.stroke();
-                        ctx.fillStyle = mul === 1 ? '#091c32' : '#0a1a2d';
-                        ctx.strokeStyle = mul === 1 ? '#68d8ff' : '#4c9dd0';
-                        ctx.lineWidth = 1;
-                        const label = mul === 1 ? 'F' : '2F', w = mul === 1 ? 20 : 24;
-                        ctx.beginPath();
-                        ctx.roundRect(x - w / 2, axisY + 14, w, 16, 7);
+                        ctx.roundRect(x - w / 2, axisY + 13, w, 17, 2);
                         ctx.fill();
                         ctx.stroke();
-                        text(ctx, label, x, axisY + 26, 9, mul === 1 ? '#baf1ff' : '#9fd0ef');
+                        text(ctx, label, x, axisY + 25.5, 10.5, isF ? '#F4C27A' : '#93A9C2');
                         ctx.restore();
                     }
                 if (s.level !== 'simple') {
@@ -520,24 +671,29 @@ var LensLab;
                         total += l;
                     }
                     let remaining = total * prog;
+                    // 暗い背景で光線が光って見えるよう、同じ色の淡いにじみを付ける
+                    ctx.save();
+                    ctx.shadowColor = color;
+                    ctx.shadowBlur = 7;
                     ctx.globalAlpha = alpha;
                     for (let i = 0; i < pts.length - 1; i++) {
                         if (remaining <= 0)
                             break;
                         const a = pts[i], b = pts[i + 1], len = segs[i];
                         if (remaining >= len) {
-                            strokeLine(ctx, a.x, a.y, b.x, b.y, color, 1.65, dashed);
+                            strokeLine(ctx, a.x, a.y, b.x, b.y, color, 2.3, dashed);
                             remaining -= len;
                         }
                         else {
                             const t = len < 1e-6 ? 0 : remaining / len;
-                            strokeLine(ctx, a.x, a.y, a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, color, 1.65, dashed);
+                            strokeLine(ctx, a.x, a.y, a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, color, 2.3, dashed);
                             remaining = 0;
                         }
                     }
-                    ctx.globalAlpha = 1;
+                    ctx.restore();
                 };
-                const rayColors = ['#e3c66d', '#7ed8ea', '#eda083'];
+                // 平行な光（黄）・中心を通る光（水色）・焦点を通る光（さんご色）。凡例の色と必ず揃える
+                const rayColors = ['#F5C451', '#7FD8F0', '#F08F7A'];
                 const xRight = Math.min(W + 10, this.worldX(Math.min(p.lensX + Math.max(o.s + 12, p.focal * 2.6), p.lensX + 280)));
                 // 1) Parallel to the optical axis -> passes through the far focus after the lens.
                 const parallelY = uY;
@@ -560,14 +716,14 @@ var LensLab;
                         [0, rayColors[1], centerSlope],
                     ]) {
                         const yBack = this.worldY(yLens + o.b * Number(slope));
-                        ctx.globalAlpha = .45;
-                        strokeLine(ctx, xLens, this.worldY(yLens), xVirt, yBack, color, 1, true);
+                        ctx.globalAlpha = .55;
+                        strokeLine(ctx, xLens, this.worldY(yLens), xVirt, yBack, color, 1.2, true);
                         ctx.globalAlpha = 1;
                     }
                     if (Math.abs(o.a - p.focal) > .18) {
                         const yAtLens = uY * (p.focal / (o.a - p.focal));
-                        ctx.globalAlpha = .45;
-                        strokeLine(ctx, xLens, this.worldY(yAtLens), xVirt, this.worldY(yAtLens), rayColors[2], 1, true);
+                        ctx.globalAlpha = .55;
+                        strokeLine(ctx, xLens, this.worldY(yAtLens), xVirt, this.worldY(yAtLens), rayColors[2], 1.2, true);
                         ctx.globalAlpha = 1;
                     }
                 }
@@ -588,11 +744,11 @@ var LensLab;
                         ctx.globalAlpha = 1;
                     };
                     const a0 = LensLab.clamp(progression * 2, 0, 1), a1 = LensLab.clamp((progression - .5) * 2, 0, 1);
-                    const rayColor = '#80d3e5';
+                    const rayColor = '#7FD8F0';
                     if (a0 > 0)
-                        drawSegment(x0, y0, x0 + (x1 - x0) * a0, y0 + (y1 - y0) * a0, rayColor, .23);
+                        drawSegment(x0, y0, x0 + (x1 - x0) * a0, y0 + (y1 - y0) * a0, rayColor, .28);
                     if (a1 > 0)
-                        drawSegment(x1, y1, x1 + (x2 - x1) * a1, y1 + (y2 - y1) * a1, rayColor, .24);
+                        drawSegment(x1, y1, x1 + (x2 - x1) * a1, y1 + (y2 - y1) * a1, rayColor, .3);
                 }
             }
             // Object: reflect the selected object type in the side-view so the stage and
@@ -723,8 +879,17 @@ var LensLab;
             const previewY = -o.s / o.a * 3.1;
             const yy = this.worldY(previewY), blurLength = LensLab.clamp(o.r * this.ppm * this.verticalRatio, 2, 60);
             ctx.save();
+            if (o.focus) {
+                // ピントが合ったら、スクリーン上の像の位置をアンバーで光らせて気づけるようにする
+                ctx.shadowColor = '#E0982C';
+                ctx.shadowBlur = 14;
+                ctx.strokeStyle = '#E0982C';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(sx - 9, base - 94, 18, 188);
+                text(ctx, 'ピント ✓', LensLab.clamp(sx, 40, W - 40), Math.min(base + 120, H - 12), 12, '#F4C27A');
+            }
             ctx.globalAlpha = o.focus ? .95 : .45;
-            ctx.fillStyle = '#efa481';
+            ctx.fillStyle = o.focus ? '#F5C451' : '#F08F7A';
             ctx.fillRect(sx - 4, yy - blurLength / 2, 8, blurLength);
             ctx.restore();
             // annotation for ideal virtual image
@@ -736,25 +901,27 @@ var LensLab;
                 text(ctx, '虚像', vx, vy - 10, 11, '#d4b3ff');
                 ctx.restore();
             }
-            for (const [part, x, title, color] of [['object', ox, '物体', '#ffc88b'], ['lens', lx, '凸レンズ', '#8be4fc'], ['screen', sx, 'スクリーン', '#bed7ef']]) {
+            // 動かせる装置の名前。選択中の装置はアンバーの枠と「↔」つまみで、いま動かしている対象だと分かるようにする
+            for (const [part, x, title] of [['object', ox, '物体'], ['lens', lx, '凸レンズ'], ['screen', sx, 'スクリーン']]) {
                 const selected = s.selected === part;
+                const labelY = LensLab.clamp(base - 90, 42, 62);
                 if (selected) {
-                    ctx.strokeStyle = '#80dcf960';
+                    ctx.strokeStyle = '#E0982C99';
                     ctx.lineWidth = 1.5;
-                    ctx.setLineDash([4, 4]);
+                    ctx.setLineDash([5, 4]);
                     ctx.strokeRect(x - 20, base - 102, 40, 204);
                     ctx.setLineDash([]);
                 }
-                text(ctx, title, LensLab.clamp(x, 48, W - 48), LensLab.clamp(base - 90, 42, 62), 11, color);
+                text(ctx, title, LensLab.clamp(x, 48, W - 48), labelY, selected ? 12 : 11, selected ? '#F4C27A' : '#93A9C2');
                 if (selected) {
-                    ctx.fillStyle = '#264f6e';
-                    ctx.strokeStyle = '#67d6f1';
-                    ctx.lineWidth = 1.2;
+                    ctx.fillStyle = '#3A2A14';
+                    ctx.strokeStyle = '#E0982C';
+                    ctx.lineWidth = 1.5;
                     ctx.beginPath();
-                    ctx.roundRect(x - 19, base + 68, 38, 24, 10);
+                    ctx.roundRect(x - 19, base + 68, 38, 24, 3);
                     ctx.fill();
                     ctx.stroke();
-                    text(ctx, '↔', x, base + 85, 16, '#c4f2ff');
+                    text(ctx, '↔', x, base + 85, 16, '#F4C27A');
                 }
             }
             if (s.level !== 'simple') {
@@ -899,7 +1066,7 @@ var LensLab;
             this.physical = { ...LensLab.DEFAULT };
             this.level = 'simple';
             this.rayMode = 'basic';
-            this.showFoci = false;
+            this.showFoci = true;
             this.teacher = false;
             this.suggestions = true;
             this.mode = '2d';
@@ -977,7 +1144,7 @@ var LensLab;
                 this.rayMode = ['off', 'basic', 'many'].includes(pref.rayMode) ? pref.rayMode : 'basic';
                 this.suggestions = pref.suggestionsEnabled !== false;
                 this.teacher = pref.teacherMode === true;
-                this.showFoci = pref.showFoci === true;
+                this.showFoci = pref.showFoci !== false;
                 const ids = saved.learning?.completedMissionIds || [];
                 if (Array.isArray(ids))
                     for (const id of ids)
@@ -1428,7 +1595,7 @@ var LensLab;
                 rayLegend.innerHTML = '光線は非表示です。まずはスクリーン像の変化を観察してみましょう。';
             }
             else if (this.rayMode === 'basic') {
-                rayLegend.innerHTML = '<strong>基本3本</strong><br><span class="sw y"></span>平行な光 → レンズの後で <strong>焦点 F</strong> を通る<br><span class="sw b"></span>レンズの中心を通る光 → <strong>そのまま直進</strong><br><span class="sw o"></span>手前の焦点 F を通る光 → レンズの後で <strong>光軸に平行</strong><br><span style="color:#8fb3cc">※ レンズの外側を通る光線は、教科書と同じくレンズの中心線を点線で延ばして作図しています（実際のレンズの外を通る光は曲がりません）</span>';
+                rayLegend.innerHTML = '<strong>基本3本</strong><br><span class="sw y"></span>平行な光 → レンズの後で <strong>焦点 F</strong> を通る<br><span class="sw b"></span>レンズの中心を通る光 → <strong>そのまま直進</strong><br><span class="sw o"></span>手前の焦点 F を通る光 → レンズの後で <strong>光軸に平行</strong><br><span style="color:#6F87A3">※ レンズの外側を通る光線は、教科書と同じくレンズの中心線を点線で延ばして作図しています（実際のレンズの外を通る光は曲がりません）</span>';
             }
             else {
                 rayLegend.innerHTML = '<strong>多数の光線</strong><br><span class="sw m"></span>物体の一点からたくさんの光が広がり、レンズを通って像の一点に集まる様子を見られます。';
@@ -1447,18 +1614,26 @@ var LensLab;
                 pill.classList.add('virtual');
             }
             else if (o.focus) {
-                pill.textContent = '✓ ピントが合っている';
+                pill.textContent = '✓ ピントが合った！';
             }
             else {
                 pill.textContent = '◌ ピントがずれている';
                 pill.classList.add('out');
             }
+            // ピントが合った瞬間だけ、スクリーン像の枠を一度光らせる
+            const box = this.screen.parentElement, inFocus = o.kind === 'real' && o.focus && !this.virtualVisible;
+            if (inFocus && !box.classList.contains('in-focus')) {
+                box.classList.remove('pulse');
+                void box.offsetWidth;
+                box.classList.add('pulse');
+            }
+            box.classList.toggle('in-focus', inFocus);
             const desc = o.kind === 'infinity' ? '出射光は平行になり、有限の位置には像を結びません。' : o.kind === 'virtual' ? '焦点より内側。スクリーンにはぼけた光が届き、鮮明な実像にはなりません。' : o.focus ? '光がスクリーン上に集まっています。' : 'スクリーン位置と実像の位置が異なります。';
             this.setText('shortDescribe', desc);
             const desc2 = this.virtualVisible ? 'これはレンズを通して見える虚像の模式図です。スクリーンに映った像ではありません。' : o.kind === 'real' && o.b !== null ? `実像はレンズから ${o.b.toFixed(1)} cm の位置。スクリーンは ${o.s.toFixed(1)} cm です。` : desc;
             this.setText('screenExplain', desc2);
             this.setText('formulaNumbers', `物体距離 a = ${o.a.toFixed(2)} cm ／ スクリーン距離 s = ${o.s.toFixed(2)} cm\nぼけ半径 r = (D/2) × |1+s/a−s/f| = ${o.r.toFixed(3)} cm`);
-            this.el('formulaNumbers').setAttribute('style', 'white-space:pre-line;margin:8px 0;font-size:11px;color:#a5c6df');
+            this.el('formulaNumbers').setAttribute('style', 'white-space:pre-line;margin:8px 0;font-size:11.5px;color:#93A9C2;font-family:ui-monospace,Consolas,monospace');
             this.el('undoBtn').toggleAttribute('disabled', this.undoStack.length === 0);
             if (isMission)
                 this.updateMissionPanel();
