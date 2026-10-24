@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0b1425"/>
+<title>レンズLAB | 光のしくみを体験しよう</title>
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;color:#f1f5ff;background:#0b1425;font-synthesis:none;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box}body{margin:0;min-width:320px;background:radial-gradient(circle at 18% -10%,#294b7a 0,transparent 38%),radial-gradient(circle at 92% 0%,#15304f 0,transparent 28%),linear-gradient(180deg,#081221 0%,#0b1425 42%,#0c1730 100%)}button,select,input{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #80ddfa;outline-offset:3px}
+.shell{max-width:1260px;margin:0 auto;padding:16px 16px 68px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0 15px}.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#3dd8df,#79a1ff);display:grid;place-items:center;color:#0d1c39;font-size:25px;font-weight:900;box-shadow:0 10px 24px #0005, inset 0 1px 0 #ffffff55}.brand h1{font-size:20px;letter-spacing:.015em;margin:0}.brand p{font-size:10px;color:#92a7c5;margin:2px 0 0}.top-right{display:flex;gap:8px;align-items:center}.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:50px;background:#16253d;border:1px solid #2b3d59;color:#b8cde3;font-size:11px}.chip:before{content:"";width:6px;height:6px;background:#63d7b2;border-radius:50%}.action{border:1px solid #314461;background:#18283f;color:#dbebfb;border-radius:11px;padding:10px 12px;font-size:12px;font-weight:650}.action:hover{background:#203854}.action.primary{border-color:#51b6ea;background:linear-gradient(135deg,#31b5e1,#5d88e8);color:#06152b;font-weight:800}.action.ghost{background:transparent}.action:disabled{opacity:.32;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.tabs{display:flex;gap:4px;border:1px solid #243752;background:#101c2f;border-radius:14px;padding:5px;margin-bottom:13px;max-width:440px}.tab{flex:1;border:0;padding:11px 14px;border-radius:10px;color:#91abc9;background:transparent;font-weight:700;font-size:13px}.tab.active{background:#284362;color:#f3faff;box-shadow:0 3px 10px #0003}
+.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(310px,1fr);gap:13px;align-items:start}.column{min-width:0;display:flex;flex-direction:column;gap:13px}.panel{background:linear-gradient(180deg,#12223a 0%,#0f1c31 100%);border:1px solid #2d4667;border-radius:21px;box-shadow:0 14px 36px #04091366, inset 0 1px 0 #ffffff0a;overflow:hidden;backdrop-filter:blur(8px)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 12px}.panel-title{font-size:14px;font-weight:800;letter-spacing:.02em}.muted{color:#8fa6c5;font-size:11px}.view-switch,.seg{display:flex;gap:3px;background:#0b182c;border:1px solid #253a55;padding:3px;border-radius:11px}.view-switch button,.seg button{background:transparent;color:#95a9c7;border:0;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;white-space:nowrap}.view-switch button.active,.seg button.active{background:#2c4967;color:white;box-shadow:0 2px 9px #0005}
+.stage{position:relative;margin:0 14px;background:radial-gradient(circle at 50% 42%,#18365a 0,#101d31 62%,#0b1729 100%);border:1px solid #325879;border-radius:18px;overflow:hidden;height:352px;touch-action:none;user-select:none;cursor:grab;box-shadow:inset 0 1px 0 #ffffff10, inset 0 0 80px #59c9ff08, 0 10px 28px #02101f55}.stage:active{cursor:grabbing}.stage canvas{width:100%;height:100%;display:block;touch-action:none}.stage-helper{position:absolute;left:14px;bottom:42px;background:#08172abf;border:1px solid #3d6488;border-radius:50px;padding:7px 12px;color:#c4d9ef;font-size:10px;pointer-events:none;backdrop-filter:blur(8px);box-shadow:0 6px 16px #0005}.stage-note{position:absolute;bottom:9px;left:10px;right:10px;display:flex;justify-content:space-between;gap:6px;pointer-events:none;color:#9bb7d0;font-size:10px;text-shadow:0 1px 4px #061529}.stage-note span{background:#0c1b2fcc;border:1px solid #27435f;border-radius:8px;padding:4px 7px;backdrop-filter:blur(8px)}.stage-tools{display:flex;justify-content:space-between;gap:8px;padding:10px 12px 13px;align-items:center;flex-wrap:wrap}.small-tools{display:flex;align-items:center;gap:6px}.mini{border:1px solid #395678;background:linear-gradient(180deg,#1b3150,#162845);color:#d7e8f8;border-radius:10px;padding:8px 10px;font-size:11px;min-height:32px;font-weight:700;box-shadow:inset 0 1px 0 #ffffff10}.mini.selected{border-color:#50c4ed;color:#92e6ff}.mini.active{background:#225979}.status-inline{color:#85b4d3;font-size:11px}
+.viewer{padding:0 13px 13px}.viewer-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:11px}.screen-box{position:relative;min-width:0;aspect-ratio:1.25/1;background:radial-gradient(circle at 50% 42%,#182b46,#081426 76%);border:1px solid #31516f;border-radius:16px;display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 1px 0 #ffffff0d, inset 0 0 50px #51c9ff08}.screen-box canvas{display:block;width:100%;height:100%;object-fit:contain;image-rendering:auto}.screen-zoom{position:absolute;right:7px;top:7px;border:1px solid #38536c;border-radius:7px;background:#13283bad;color:#c9eaff;padding:4px 6px;font-size:11px}.data-card{display:flex;flex-direction:column;gap:6px;justify-content:center}.metric{display:flex;justify-content:space-between;align-items:center;gap:7px;font-size:11px;padding:5px 0;border-bottom:1px solid #253951}.metric span{color:#90a9c8}.metric strong{font-variant-numeric:tabular-nums;font-size:13px}.focus-pill{font-size:11px;display:inline-block;border:1px solid #2e7e75;color:#94efd2;background:linear-gradient(180deg,#133d37,#12332f);padding:7px 10px;border-radius:10px;font-weight:800;box-shadow:inset 0 1px 0 #ffffff10}.focus-pill.out{color:#f6c493;border-color:#8a5f34;background:linear-gradient(180deg,#4a3220,#382416)}.focus-pill.virtual{color:#d8b6ff;border-color:#7a58b7;background:linear-gradient(180deg,#3b2b57,#2e2145)}.viewer-detail{margin-top:10px;font-size:11px;color:#9db6d4;line-height:1.7}
+.controls{padding:13px 15px 15px}.control-line{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0}.control-label{font-size:12px;font-weight:700}.row-group{display:flex;gap:6px;flex-wrap:wrap}.field{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0 7px;font-size:12px}.field label{font-weight:700}.field strong{font-size:14px;font-variant-numeric:tabular-nums;color:#b1e8fa}.range{width:100%;accent-color:#57c3e5;cursor:pointer}.tiny{font-size:10px;color:#819cb7}.divider{height:1px;background:#293d54;margin:13px 0}.select{background:#172941;border:1px solid #355271;color:#f0f5fe;border-radius:9px;padding:9px;max-width:100%;font-size:12px}.expander{width:100%;text-align:left;background:transparent;color:#b9d0e6;border:0;padding:6px 0;font-size:12px;font-weight:700}.hidden{display:none!important}.readout{background:linear-gradient(180deg,#0d1c31,#0b1729);padding:11px 12px;border-radius:13px;border:1px solid #2e4765;font-size:12px;line-height:1.75;box-shadow:inset 0 1px 0 #ffffff08}.formula{font-family:Georgia,serif;color:#d6ecff;font-size:17px}.drawer{margin-top:11px}.footer{font-size:11px;color:#839ab5;line-height:1.7;text-align:center;padding:17px}
+.notice{display:flex;gap:10px;align-items:flex-start;background:linear-gradient(180deg,#173148,#11253b);border:1px solid #356a84;border-radius:14px;margin:12px 0 0;padding:12px 13px;font-size:12px;color:#caeaf1;line-height:1.55;box-shadow:0 8px 24px #02091333}.notice .dismiss{margin-left:auto;flex:0 0 auto;border:0;background:transparent;color:#83a9c3;font-size:15px}.mission-panel{padding:14px 15px}.mission-list{display:flex;gap:7px;overflow-x:auto;padding-bottom:5px}.mission-btn{border:1px solid #334b6a;background:#162940;color:#a9bed8;padding:8px 12px;border-radius:10px;font-size:11px;white-space:nowrap}.mission-btn.active{color:white;background:#29516f;border-color:#4da5ce}.mission-btn.done{border-color:#276c64}.mission-title{margin:12px 0 6px;font-size:15px;font-weight:800}.mission-desc{font-size:12px;color:#a8c0d9;line-height:1.7;margin:0 0 10px}.mission-progress{font-size:11px;color:#85b4d3}.mission-result{background:#12382f;border:1px solid #367d69;color:#aaf9d7;border-radius:10px;padding:10px 11px;font-size:12px;margin:9px 0}.mission-hint{background:#23334a;color:#c5dcf1;border:1px solid #3a526e;border-radius:10px;font-size:11px;padding:10px 11px;line-height:1.7;margin:10px 0}.toast{position:fixed;z-index:5;bottom:17px;left:50%;transform:translateX(-50%);background:#1c4e43;color:#c5ffe9;border:1px solid #4aad8c;box-shadow:0 8px 35px #0008;padding:12px 17px;border-radius:12px;font-size:13px;max-width:90vw;pointer-events:none}
+
+.ray-legend{margin-top:10px;background:linear-gradient(180deg,#0f1d31,#0c1729);border:1px solid #2d4864;border-radius:13px;padding:10px 12px;color:#b7cee6;font-size:11px;line-height:1.65}.ray-legend .sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}.ray-legend .y{background:#e3c66d}.ray-legend .b{background:#7ed8ea}.ray-legend .o{background:#eda083}.ray-legend .m{background:#7ed8ea}.ray-legend strong{color:#eff7ff}.eyebrow{display:inline-block;padding:3px 7px;border-radius:999px;border:1px solid #32557a;background:#12263e;color:#a9cdec;font-size:10px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;margin-bottom:5px}
+@media(max-width:820px){.shell{padding:11px 11px 45px}.layout{display:flex;flex-direction:column;align-items:stretch}.column{display:contents}#experimentPanel{order:1}#viewerPanel{order:2}#controlsPanel{order:3}#settingsPanel{order:4}#suggestion{order:5}.stage{height:clamp(238px,64vw,330px)}.top{padding-bottom:12px}.panel-head{padding:12px 13px 10px}}
+@media (max-width:400px){.brand h1{font-size:18px}.stage{height:250px}.small-tools{gap:4px}.mini{padding:7px 6px;font-size:10px}.stage-helper{font-size:9px}.chip{display:none}.viewer-grid{grid-template-columns:1fr 1fr}.metric{font-size:10px}.metric strong{font-size:11px}.view-switch button{padding:8px 10px}}
+@media (max-height:480px) and (orientation:landscape){.column{display:flex}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(215px,1fr);gap:9px}.shell{padding:7px 10px 30px}.top{padding-bottom:7px}.brand h1{font-size:16px}.brand p{display:none}.logo{width:32px;height:32px;border-radius:9px;font-size:18px}.tabs{margin-bottom:8px;padding:3px}.tab{padding:6px}.column{gap:9px}.stage{height:calc(100vh - 143px);min-height:170px;margin:0 9px}.stage-tools{padding:6px 8px}.panel-head{padding:8px 11px 7px}.viewer-grid{grid-template-columns:1fr;gap:6px}.screen-box{aspect-ratio:1.8/1;max-height:120px}.controls{padding:7px 12px}.field{margin:6px 0 2px}.divider{margin:5px 0}.footer{display:none}}
+.part-pick{display:flex;gap:4px;padding:10px 12px 0}.part-pick button{flex:1;border:1px solid #395678;background:#13243c;color:#a9c3dc;border-radius:10px;padding:9px 4px;font-size:12px;font-weight:800;min-height:40px}.part-pick button.active{background:#225979;border-color:#50c4ed;color:#e6f8ff;box-shadow:0 2px 9px #0005}
+@media (pointer:coarse){.mini{min-height:42px;padding:9px 12px}.small-tools{gap:8px}.view-switch button,.seg button{padding:10px 12px}.range{height:32px}}
+@media(min-width:821px){.stage{height:430px}.viewer-grid{grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="top"><div class="brand"><div class="logo">◉</div><div><h1>レンズLAB <span id="versionLabel" style="font-size:10px;color:#94b7d5;font-weight:500"></span></h1><p>光を動かす。しくみが見える。</p></div></div><div class="top-right"><span class="chip">ローカルで動作</span><button class="action ghost" id="resetBtn" title="実験条件を初期化">↺ リセット</button></div></header>
+<div class="tabs"><button id="freeTab" class="tab active">✦ 自由実験</button><button id="missionTab" class="tab">◎ ミッション</button></div>
+<div id="missionPanel" class="panel mission-panel hidden"><div class="mission-progress" id="missionProgress">すべてのミッションに最初から挑戦できます</div><div id="missionList" class="mission-list"></div><div class="mission-title" id="missionTitle"></div><p class="mission-desc" id="missionDesc"></p><div class="actions"><button class="action" id="missionHintBtn">ヒントを見る</button><button class="action" id="missionObserveBtn">観察した ✓</button><button class="action" id="missionRevealBtn">結果を表示</button><button class="action ghost" id="exitMissionBtn">自由実験に戻る</button></div><div id="missionExtra"></div></div>
+<div class="layout">
+<section class="column">
+  <div class="panel" id="experimentPanel">
+    <div class="panel-head"><div><div class="eyebrow">Lens Stage</div><div class="panel-title">光学実験エリア</div><span class="muted" id="stageSubtitle">物体・レンズ・スクリーンを左右に動かそう</span></div><div class="view-switch"><button id="view2d" class="active">2D</button><button id="view3d">3D ↗</button></div></div>
+    <div class="stage" id="stage"><canvas id="stageCanvas" aria-label="ドラッグ可能な光学実験装置"></canvas><div class="stage-helper" id="stageHelper">☝ 図形を動かす / 背景で移動 / ピンチで拡大</div><div class="stage-note"><span id="stageStatus">凸レンズ・側面図</span><span id="scaleStatus">縦寸法は見やすく拡大</span></div></div>
+    <div class="part-pick" role="group" aria-label="動かす装置を選ぶ"><button id="pickObject">物体</button><button id="pickLens">凸レンズ</button><button id="pickScreen" class="active">スクリーン</button></div>
+    <div class="stage-tools"><div class="small-tools"><button class="mini" id="minusBtn" title="選択部分を左へ0.5cm">− 0.5</button><span class="status-inline" id="selectedLabel">スクリーン選択中</span><button class="mini" id="plusBtn" title="選択部分を右へ0.5cm">＋ 0.5</button></div><div class="small-tools"><button class="mini" id="fitBtn">⊡ 全体表示</button><button class="mini" id="undoBtn">↶ 戻す</button></div><div class="small-tools hidden" id="threeControls"><button class="mini" id="eyeSide">横</button><button class="mini" id="eyeAngle">斜め</button><button class="mini" id="eyeScreen">スクリーン正面</button></div></div>
+  </div>
+  <div id="suggestion" class="notice"><span>✦</span><span id="suggestionText">スクリーンを動かして、像がくっきり映る位置を探そう。</span><button class="dismiss" id="suggestionClose" aria-label="ヒントを閉じる">×</button></div>
+  <div class="panel controls" id="controlsPanel">
+    <div class="control-line"><span class="control-label">光線の表示</span><button id="animateBtn" class="mini">▶ 光の道筋を再生</button></div>
+    <div class="seg" style="width:100%"><button id="rayOff" style="flex:1">OFF</button><button id="rayBasic" class="active" style="flex:1">基本3本</button><button id="rayMany" style="flex:1">多数の光線</button></div><div id="rayLegend" class="ray-legend"></div>
+    <div class="divider"></div>
+    <div class="control-line"><span class="control-label">物体の種類</span><div class="row-group"><button class="mini selected" id="objArrow">↑ 矢印</button><button class="mini" id="objLetter">F 文字</button><button class="mini" id="objCandle">♧ ろうそく</button></div></div>
+    <div class="field"><label for="focalRange">焦点距離 <span style="color:#8eb3cc;font-weight:400">f</span></label><strong id="focalValue">10.0 cm</strong></div><input class="range" type="range" id="focalRange" min="5" max="30" step="0.5" value="10"/>
+    <div class="tiny">焦点距離を変えると、光線の曲がり方と像の位置が変わります。</div>
+    <div class="divider"></div>
+    <div class="control-line"><span class="control-label">学習情報の表示</span></div><div class="seg"><button id="levelSimple" class="active" style="flex:1">シンプル</button><button id="levelNumeric" style="flex:1">数値あり</button><button id="levelAdvanced" style="flex:1">発展</button></div>
+    <div id="advancedArea" class="hidden"><div class="field"><label for="diameterRange">レンズ直径 D</label><strong id="diameterValue">4.0 cm</strong></div><input class="range" type="range" id="diameterRange" min="1" max="8" step="0.5" value="4"/><div class="tiny">直径を大きくすると、ピントずれのぼけが大きくなります。理想像の位置は変わりません。</div></div>
+  </div>
+</section>
+<aside class="column">
+  <section class="panel" id="viewerPanel"><div class="panel-head"><div><div class="eyebrow">Screen View</div><div class="panel-title">スクリーンに映る像</div><span class="muted" id="screenSubtitle">スクリーンを正面から見た様子</span></div><button class="mini" id="toggleVirtualBtn" disabled>レンズ越し観察</button></div>
+    <div class="viewer"><div class="viewer-grid"><div class="screen-box"><canvas id="screenCanvas" width="192" height="192" aria-label="スクリーン上の像"></canvas><button id="screenZoomBtn" class="screen-zoom">⛶</button></div><div class="data-card"><div id="focusPill" class="focus-pill out">◌ ピントがずれている</div><div id="shortDescribe" class="muted" style="line-height:1.55">スクリーンを移動すると、ぼけ方が変わります。</div><div class="metric" id="metricA"><span>物体距離</span><strong id="aValue">30.0 cm</strong></div><div class="metric" id="metricS"><span>スクリーン距離</span><strong id="sValue">18.0 cm</strong></div><div class="metric" id="metricF"><span>焦点距離</span><strong id="miniF">10.0 cm</strong></div><div class="metric" id="metricB"><span>像距離</span><strong id="bValue">15.0 cm</strong></div><div class="metric" id="metricM"><span>倍率</span><strong id="mValue">0.50 倍</strong></div></div></div>
+    <div class="viewer-detail" id="screenExplain">スクリーンを左に少し動かすとピントが合います。</div>
+    <div id="formulaPanel" class="readout hidden" style="margin-top:10px"><div class="formula">1/a + 1/b = 1/f</div><div id="formulaNumbers"></div><div class="tiny">理想薄レンズ・円形開口による幾何光学モデル。波動光学や収差は含みません。</div></div></div>
+  </section>
+  <section class="panel controls" id="settingsPanel"><div class="control-line"><span class="control-label">授業・表示設定</span></div><label style="font-size:12px;display:flex;gap:9px;align-items:center;margin:9px 0"><input type="checkbox" id="teacherMode"/> 授業モード（自動的な答え・提案を隠す）</label><label style="font-size:12px;display:flex;gap:9px;align-items:center;margin:9px 0"><input type="checkbox" id="showFoci"/> 焦点 F・2F を表示する</label><label style="font-size:12px;display:flex;gap:9px;align-items:center;margin:9px 0"><input type="checkbox" id="suggestionsEnabled" checked/> 自由実験でヒントを表示</label><p class="tiny">初期版はログイン不要です。実験条件・設定・ミッション達成記録をこのブラウザに保存します。</p></section>
+</aside>
+</div>
+<div class="footer">レンズLAB <span id="versionFooter"></span> —理想薄レンズによる学習用シミュレーション。光線の再生は光路を示す演出であり、光速を表すものではありません。</div>
+</main>
+<div id="zoomOverlay" class="hidden" style="position:fixed;inset:0;background:#060d19f5;z-index:9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px"><div style="display:flex;justify-content:space-between;width:min(90vw,560px)"><strong>スクリーン拡大観察</strong><button class="action" id="closeOverlay">閉じる ×</button></div><canvas id="zoomCanvas" width="192" height="192" style="width:min(90vw,560px);aspect-ratio:1;object-fit:contain;background:#111e30;border:1px solid #33516c;border-radius:14px"></canvas></div>
+<div id="toast" class="toast hidden"></div>
+<script>"use strict";
+const VERSION = 'v0.1.5';
+// 古いiOS Safari（15以前）にはroundRectが無く、描画が止まってしまうため補う
+if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+        r = Math.min(typeof r === 'number' ? r : 0, w / 2, h / 2);
+        this.moveTo(x + r, y);
+        this.arcTo(x + w, y, x + w, y + h, r);
+        this.arcTo(x + w, y + h, x, y + h, r);
+        this.arcTo(x, y + h, x, y, r);
+        this.arcTo(x, y, x + w, y, r);
+        this.closePath();
+    };
+}
+var LensLab;
+(function (LensLab) {
+    LensLab.DEFAULT = { objectX: -30, lensX: 0, screenX: 18, focal: 10, diameter: 4, objectType: 'arrow' };
+    LensLab.EPS = 1e-9;
+    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+    LensLab.clamp = clamp;
+    function finite(n) { return typeof n === 'number' && Number.isFinite(n); }
+    LensLab.finite = finite;
+    function validatePhysical(raw) {
+        const data = (raw && typeof raw === 'object' ? raw : {});
+        const focal = finite(data.focal) ? clamp(data.focal, 5, 30) : LensLab.DEFAULT.focal;
+        const diameter = finite(data.diameter) ? clamp(data.diameter, 1, 8) : LensLab.DEFAULT.diameter;
+        const lensX = finite(data.lensX) ? clamp(data.lensX, -500, 500) : LensLab.DEFAULT.lensX;
+        const a = finite(data.objectX) ? clamp(lensX - data.objectX, 2, 120) : 30;
+        const s = finite(data.screenX) ? clamp(data.screenX - lensX, 1, 240) : 18;
+        const objectType = data.objectType === 'letterF' || data.objectType === 'candle' ? data.objectType : 'arrow';
+        return { objectX: lensX - a, lensX, screenX: lensX + s, focal, diameter, objectType };
+    }
+    LensLab.validatePhysical = validatePhysical;
+    function evaluate(p) {
+        const a = p.lensX - p.objectX, s = p.screenX - p.lensX, f = p.focal, d = p.diameter;
+        if (!(a >= 2 && s >= 1 && f > 0 && d > 0 && [a, s, f, d].every(Number.isFinite)))
+            throw new Error('不正な光学条件');
+        const inverse = 1 / f - 1 / a;
+        const kind = Math.abs(inverse) < LensLab.EPS ? 'infinity' : inverse > 0 ? 'real' : 'virtual';
+        const b = kind === 'infinity' ? null : 1 / inverse;
+        const m = b === null ? null : -b / a;
+        const k = 1 + s / a - s / f;
+        const r = .5 * d * Math.abs(k);
+        return { a, s, f, d, k, r, b, m, kind, focus: kind === 'real' && r <= .10 };
+    }
+    LensLab.evaluate = evaluate;
+    function projectRay(input, u, q) {
+        return { y: -(input.s / input.a) * u.y + input.k * q.y, z: -(input.s / input.a) * u.z + input.k * q.z };
+    }
+    LensLab.projectRay = projectRay;
+    function raySlope(input, u, q) {
+        return { y: (q.y - u.y) / input.a - q.y / input.f, z: (q.z - u.z) / input.a - q.z / input.f };
+    }
+    LensLab.raySlope = raySlope;
+    function apertureSamples(count) {
+        const pts = [];
+        for (let i = 0; i < count; i++) {
+            const angle = i * 2.399963229728653, rad = Math.sqrt((i + .5) / count);
+            pts.push({ y: rad * Math.sin(angle), z: rad * Math.cos(angle) });
+        }
+        return pts;
+    }
+    LensLab.apertureSamples = apertureSamples;
+    function movePart(p, part, x) {
+        if (!Number.isFinite(x))
+            return p;
+        if (part === 'object')
+            return { ...p, objectX: clamp(x, p.lensX - 120, p.lensX - 2) };
+        if (part === 'screen')
+            return { ...p, screenX: clamp(x, p.lensX + 1, p.lensX + 240) };
+        const next = clamp(x, Math.max(p.objectX + 2, p.screenX - 240), Math.min(p.objectX + 120, p.screenX - 1));
+        return { ...p, lensX: clamp(next, -500, 500) };
+    }
+    LensLab.movePart = movePart;
+    LensLab.MISSIONS = [
+        { id: 'M1', title: 'ピントを合わせろ！', subtitle: 'スクリーンを動かし、像をくっきり映そう。', hint1: '物体はそのままで、スクリーンを左に動かしてみよう。', hint2: '物体30cm、焦点距離10cmなら、像はレンズの右15cmにできる。', summary: 'スクリーンと実像ができる位置が一致すると、像が鮮明になります。' },
+        { id: 'M2', title: '逆さまの謎を解け！', subtitle: '文字Fが逆さまになる理由を光線で確かめよう。', hint1: '「基本」の光線を表示して観察しよう。', hint2: '光がレンズを通って反対側へ交わる位置に実像ができます。', summary: '実像では、物体の上下と左右が反転します。' },
+        { id: 'M3', title: '同じ大きさにできる？', subtitle: '物体と同じ大きさの、くっきりした像を作ろう。', hint1: '物体を焦点距離の2倍の位置へ動かしてみよう。', hint2: '焦点10cmなら、物体距離もスクリーン距離も20cm。', summary: '物体が2Fにあると、反対側の2Fに等倍の倒立実像ができます。' },
+        { id: 'M4', title: '像を2倍に拡大せよ！', subtitle: 'くっきりした、物体の2倍の像を作ろう。', hint1: '物体をFと2Fの間に置いてみよう。', hint2: '焦点10cmなら物体15cm、スクリーン30cmが正解の一例。', summary: '物体をFと2Fの間に置くと、2Fより外側に拡大された倒立実像ができます。' },
+        { id: 'M5', title: '消えた像を探せ！', subtitle: '物体を焦点の内側に入れて、虚像を確認しよう。', hint1: '物体をレンズの左10cmより近くにしてみよう。', hint2: 'スクリーンに鮮明な像はできません。「レンズ越し観察」を開こう。', summary: '焦点の内側では、物体側に正立の虚像ができます。スクリーンには映りません。' },
+        { id: 'B1', title: 'おまけ：光の世界を3Dで！', subtitle: '斜めからレンズと立体的な光線を観察しよう。', hint1: '「3D」を開いて、画面をドラッグして視点を回転。', hint2: '「多数の光線」にして、レンズ面を広がる光を見てみよう。', summary: '教科書の光線図は、三次元に広がる光の一部を平面に描いたものです。' }
+    ];
+    function missionCondition(id, o, rayMode, view, virtualVisible, angle) {
+        if (id === 'M1')
+            return o.kind === 'real' && o.b !== null && Math.abs(o.s - o.b) <= .5 && o.r <= .1;
+        if (id === 'M2')
+            return o.kind === 'real' && o.focus && rayMode === 'basic';
+        if (id === 'M3')
+            return o.kind === 'real' && o.m !== null && Math.abs(Math.abs(o.m) - 1) <= .05 && o.b !== null && Math.abs(o.s - o.b) <= .5;
+        if (id === 'M4')
+            return o.kind === 'real' && o.m !== null && Math.abs(Math.abs(o.m) - 2) <= .10 && o.b !== null && Math.abs(o.s - o.b) <= .5;
+        if (id === 'M5')
+            return o.a < o.f - .2 && virtualVisible;
+        if (id === 'B1')
+            return view === '3d' && rayMode === 'many' && Math.abs(angle) >= .35;
+        return false;
+    }
+    LensLab.missionCondition = missionCondition;
+})(LensLab || (LensLab = {}));
+var LensLab;
+(function (LensLab) {
+    const SCREEN_SIZE = 192;
+    function canvas(size = SCREEN_SIZE) { const c = document.createElement('canvas'); c.width = size; c.height = size; return c; }
+    function strokeLine(ctx, ax, ay, bx, by, stroke, width, dashed = false) { ctx.beginPath(); ctx.strokeStyle = stroke; ctx.lineWidth = width; ctx.setLineDash(dashed ? [4, 5] : []); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke(); ctx.setLineDash([]); }
+    function text(ctx, str, x, y, size = 11, color = '#a6b9d6', align = 'center') {
+        ctx.font = `600 ${size}px system-ui,sans-serif`;
+        ctx.textAlign = align;
+        ctx.fillStyle = color;
+        ctx.fillText(str, x, y);
+    }
+    class DrawEngine {
+        constructor(canvasElement) {
+            this.width = 400;
+            this.height = 300;
+            this.ppm = 7;
+            this.panX = 0;
+            this.panY = 0;
+            this.verticalRatio = 1.7;
+            this.viewInitialized = false;
+            this.yaw = .65;
+            this.pitch = .34;
+            this.orbitScale = 1;
+            this.lastScreenKey = '';
+            this.screenBuffer = canvas();
+            this.virtualBuffer = canvas();
+            this.objectBuffer = canvas(96);
+            this.imageSamples = [];
+            this.sampleType = null;
+            this.element = canvasElement;
+            this.ctx = canvasElement.getContext('2d');
+            this.resize();
+        }
+        resize() {
+            const rect = this.element.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+            this.width = Math.max(100, rect.width);
+            this.height = Math.max(100, rect.height);
+            this.element.width = Math.round(this.width * dpr);
+            this.element.height = Math.round(this.height * dpr);
+            this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            if (!this.viewInitialized) {
+                this.fit(LensLab.DEFAULT);
+                this.viewInitialized = true;
+            }
+        }
+        fit(p) {
+            const range = p.screenX - p.objectX;
+            this.ppm = LensLab.clamp((this.width - 78) / Math.max(20, range + 5), 1.3, 19);
+            this.panX = this.width / 2 - (p.objectX + p.screenX) * .5 * this.ppm;
+            this.panY = this.height * .56;
+        }
+        worldX(x) { return this.panX + x * this.ppm; }
+        worldY(y) { return this.panY - y * this.ppm * this.verticalRatio; }
+        invX(screenX) { return (screenX - this.panX) / this.ppm; }
+        zoomBy(factor, pivotX, pivotY) {
+            const newScale = LensLab.clamp(this.ppm * factor, .8, 48), ratio = newScale / this.ppm;
+            this.panX = pivotX + (this.panX - pivotX) * ratio;
+            this.panY = pivotY + (this.panY - pivotY) * ratio;
+            this.ppm = newScale;
+        }
+        setObject(type) {
+            if (this.sampleType === type)
+                return;
+            const g = this.objectBuffer.getContext('2d'), w = 96;
+            g.clearRect(0, 0, w, w);
+            if (type === 'letterF') {
+                // A small placard with the letter F is easier for students to read as an
+                // *object* than a giant floating glyph. The screen image then becomes an
+                // inverted placard rather than an isolated character.
+                g.fillStyle = '#d9eef8';
+                g.strokeStyle = '#72d9f5';
+                g.lineWidth = 3;
+                g.beginPath();
+                g.roundRect(24, 16, 48, 38, 6);
+                g.fill();
+                g.stroke();
+                g.fillStyle = '#4db4d6';
+                g.fillRect(46, 54, 4, 18);
+                g.fillStyle = '#4c9bc0';
+                g.fillRect(38, 72, 20, 4);
+                g.font = '900 28px Arial,sans-serif';
+                g.textAlign = 'center';
+                g.textBaseline = 'middle';
+                g.fillStyle = '#1f6b86';
+                g.fillText('F', 48, 35);
+            }
+            else if (type === 'arrow') {
+                g.strokeStyle = '#f2ae58';
+                g.fillStyle = '#f2ae58';
+                g.lineWidth = 9;
+                g.lineCap = 'round';
+                g.beginPath();
+                g.moveTo(48, 77);
+                g.lineTo(48, 28);
+                g.stroke();
+                g.beginPath();
+                g.moveTo(29, 38);
+                g.lineTo(48, 13);
+                g.lineTo(67, 38);
+                g.closePath();
+                g.fill();
+            }
+            else {
+                g.fillStyle = '#eebd79';
+                g.fillRect(37, 39, 22, 40);
+                g.fillStyle = '#f3a146';
+                g.beginPath();
+                g.moveTo(48, 11);
+                g.bezierCurveTo(39, 23, 26, 33, 48, 43);
+                g.bezierCurveTo(68, 36, 60, 23, 48, 11);
+                g.fill();
+                g.fillStyle = '#fff0a1';
+                g.beginPath();
+                g.moveTo(48, 25);
+                g.quadraticCurveTo(40, 35, 48, 39);
+                g.quadraticCurveTo(56, 35, 48, 25);
+                g.fill();
+                g.fillStyle = '#8b6b42';
+                g.fillRect(47, 39, 2, 5);
+            }
+            const data = g.getImageData(0, 0, w, w).data;
+            const samples = [];
+            for (let iy = 4; iy < w - 4; iy++)
+                for (let ix = 4; ix < w - 4; ix++) {
+                    const ii = (iy * w + ix) * 4, alpha = data[ii + 3] / 255;
+                    if (alpha < .12)
+                        continue;
+                    samples.push({ z: (ix - 48) * (5.7 / 96), y: (48 - iy) * (5.7 / 96), red: data[ii], green: data[ii + 1], blue: data[ii + 2], alpha });
+                }
+            this.imageSamples = samples;
+            this.sampleType = type;
+            this.lastScreenKey = '';
+        }
+        getBuffers(p) {
+            this.setObject(p.objectType);
+            const o = LensLab.evaluate(p);
+            const key = [o.a, o.s, o.f, o.d, p.objectType].map(v => typeof v === 'number' ? v.toFixed(3) : v).join('|');
+            if (key !== this.lastScreenKey) {
+                this.rasterScreen(o);
+                this.rasterVirtual(o);
+                this.lastScreenKey = key;
+            }
+            return { screen: this.screenBuffer, virtual: this.virtualBuffer };
+        }
+        rasterScreen(o) {
+            const ctx = this.screenBuffer.getContext('2d'), size = SCREEN_SIZE;
+            const pxPerCm = size / 14.5;
+            const radius = Math.abs(o.k) * o.d / 2 * pxPerCm;
+            const mult = -o.s / o.a;
+            const image = ctx.createImageData(size, size), rgb = image.data;
+            const count = size * size;
+            // Nearly focused rays: bilinear rasterization prevents pixelated sharp edges.
+            // For a visibly defocused image use a *continuous circular aperture*.
+            // Sampling 36 aperture points produced 36 separate miniature objects rather
+            // than the correct circle-of-confusion integral (fixed in alpha 0.1.1).
+            if (radius < 1.5) {
+                const W = new Float32Array(count), R = new Float32Array(count), G = new Float32Array(count), B = new Float32Array(count);
+                const samples = radius < .55 ? [{ y: 0, z: 0 }] : LensLab.apertureSamples(32);
+                for (const src of this.imageSamples) {
+                    const cx = size / 2 + mult * src.z * pxPerCm, cy = size / 2 - mult * src.y * pxPerCm;
+                    for (const q of samples) {
+                        const xx = cx + radius * q.z, yy = cy - radius * q.y;
+                        const xi = Math.floor(xx), yi = Math.floor(yy), fx = xx - xi, fy = yy - yi, base = src.alpha / samples.length;
+                        for (let oy = 0; oy <= 1; oy++)
+                            for (let ox = 0; ox <= 1; ox++) {
+                                const x = xi + ox, y = yi + oy;
+                                if (x < 0 || x >= size || y < 0 || y >= size)
+                                    continue;
+                                const a = base * (ox ? fx : 1 - fx) * (oy ? fy : 1 - fy), i = y * size + x;
+                                W[i] += a;
+                                R[i] += src.red * a;
+                                G[i] += src.green * a;
+                                B[i] += src.blue * a;
+                            }
+                    }
+                }
+                for (let i = 0; i < count; i++) {
+                    const w = W[i];
+                    if (w < .001)
+                        continue;
+                    rgb[i * 4] = Math.round(R[i] / w);
+                    rgb[i * 4 + 1] = Math.round(G[i] / w);
+                    rgb[i * 4 + 2] = Math.round(B[i] / w);
+                    rgb[i * 4 + 3] = Math.round(LensLab.clamp(1 - Math.exp(-w * .65), 0, .98) * 255);
+                }
+            }
+            else {
+                // Each luminous object pixel is projected as a *filled disk*, not as a
+                // sparse set of ghost images. Rasterize disk scanlines using range-add
+                // (difference arrays) so complexity scales with disk HEIGHT, not area.
+                const pitch = size + 1, bufferLength = size * pitch;
+                const DW = new Float32Array(bufferLength), DR = new Float32Array(bufferLength);
+                const DG = new Float32Array(bufferLength), DB = new Float32Array(bufferLength);
+                const diskArea = Math.PI * radius * radius;
+                const stride = radius > 75 ? 5 : radius > 45 ? 3 : radius > 22 ? 2 : 1;
+                const rr = radius * radius;
+                for (let j = 0; j < this.imageSamples.length; j += stride) {
+                    const src = this.imageSamples[j];
+                    const cx = size / 2 + mult * src.z * pxPerCm, cy = size / 2 - mult * src.y * pxPerCm;
+                    const density = src.alpha * stride / diskArea;
+                    const y0 = Math.max(0, Math.ceil(cy - radius - .5));
+                    const y1 = Math.min(size - 1, Math.floor(cy + radius - .5));
+                    if (y1 < y0)
+                        continue;
+                    for (let y = y0; y <= y1; y++) {
+                        const dy = y + .5 - cy, dx = Math.sqrt(Math.max(0, rr - dy * dy));
+                        const left = Math.max(0, cx - dx), right = Math.min(size, cx + dx);
+                        if (!(right > left))
+                            continue;
+                        const first = Math.floor(left), end = Math.ceil(right), row = y * pitch;
+                        // A range-add contributes uniformly to all covered interior pixels;
+                        // fractional coverage at both edges gives smooth circle boundaries.
+                        const add = (l, r, coverage) => {
+                            if (l >= r || coverage <= 0)
+                                return;
+                            const w = density * coverage, L = row + l, R = row + r;
+                            DW[L] += w;
+                            DW[R] -= w;
+                            DR[L] += w * src.red;
+                            DR[R] -= w * src.red;
+                            DG[L] += w * src.green;
+                            DG[R] -= w * src.green;
+                            DB[L] += w * src.blue;
+                            DB[R] -= w * src.blue;
+                        };
+                        if (end - first === 1) {
+                            add(first, end, right - left);
+                        }
+                        else {
+                            add(first, first + 1, first + 1 - left);
+                            add(first + 1, end - 1, 1);
+                            add(end - 1, end, right - (end - 1));
+                        }
+                    }
+                }
+                for (let y = 0; y < size; y++) {
+                    const base = y * pitch;
+                    let w = 0, r = 0, g = 0, b = 0;
+                    for (let x = 0; x < size; x++) {
+                        const j = base + x, i = y * size + x;
+                        w += DW[j];
+                        r += DR[j];
+                        g += DG[j];
+                        b += DB[j];
+                        if (w < .0001)
+                            continue;
+                        rgb[i * 4] = Math.round(LensLab.clamp(r / w, 0, 255));
+                        rgb[i * 4 + 1] = Math.round(LensLab.clamp(g / w, 0, 255));
+                        rgb[i * 4 + 2] = Math.round(LensLab.clamp(b / w, 0, 255));
+                        rgb[i * 4 + 3] = Math.round(LensLab.clamp(1 - Math.exp(-w * .65), 0, .98) * 255);
+                    }
+                }
+            }
+            ctx.clearRect(0, 0, size, size);
+            ctx.putImageData(image, 0, 0);
+        }
+        rasterVirtual(o) {
+            const g = this.virtualBuffer.getContext('2d');
+            g.clearRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
+            if (o.kind !== 'virtual' || o.m === null)
+                return;
+            const virtualScale = LensLab.clamp(o.m, 0, 8);
+            const size = SCREEN_SIZE / 14.5 * 5.7 * virtualScale;
+            g.save();
+            g.globalAlpha = .9;
+            g.drawImage(this.objectBuffer, 96 - size, 96 - size, size * 2, size * 2);
+            g.restore();
+        }
+        render(state) {
+            const ctx = this.ctx;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, this.width, this.height);
+            const o = LensLab.evaluate(state.physical);
+            this.getBuffers(state.physical);
+            if (state.mode === '2d')
+                this.draw2D(ctx, state, o);
+            else
+                this.draw3D(ctx, state, o);
+        }
+        draw2D(ctx, s, o) {
+            const p = s.physical, H = this.height, W = this.width;
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, 0, W, H);
+            ctx.clip();
+            const gridPx = Math.max(12, this.ppm * 5);
+            const first = (this.panX % gridPx + gridPx) % gridPx;
+            ctx.strokeStyle = '#8ab2d0';
+            ctx.lineWidth = .55;
+            ctx.globalAlpha = .08;
+            for (let x = first; x < W; x += gridPx) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, H);
+                ctx.stroke();
+            }
+            for (let y = this.panY % gridPx; y < H; y += gridPx) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(W, y);
+                ctx.stroke();
+            }
+            ctx.globalAlpha = 1;
+            strokeLine(ctx, 0, this.worldY(0), W, this.worldY(0), '#58718e', 1, true);
+            if (s.showFoci || s.level !== 'simple') {
+                const axisY = this.worldY(0);
+                for (const sign of [-1, 1])
+                    for (const mul of [1, 2]) {
+                        const wx = p.lensX + sign * p.focal * mul, x = this.worldX(wx);
+                        if (x < -20 || x > W + 20)
+                            continue;
+                        ctx.save();
+                        ctx.strokeStyle = mul === 1 ? '#7bd9ff' : '#5eaee0';
+                        ctx.lineWidth = 1.6;
+                        ctx.beginPath();
+                        ctx.moveTo(x, axisY - 10);
+                        ctx.lineTo(x, axisY + 10);
+                        ctx.stroke();
+                        ctx.fillStyle = mul === 1 ? '#091c32' : '#0a1a2d';
+                        ctx.strokeStyle = mul === 1 ? '#68d8ff' : '#4c9dd0';
+                        ctx.lineWidth = 1;
+                        const label = mul === 1 ? 'F' : '2F', w = mul === 1 ? 20 : 24;
+                        ctx.beginPath();
+                        ctx.roundRect(x - w / 2, axisY + 14, w, 16, 7);
+                        ctx.fill();
+                        ctx.stroke();
+                        text(ctx, label, x, axisY + 26, 9, mul === 1 ? '#baf1ff' : '#9fd0ef');
+                        ctx.restore();
+                    }
+                if (s.level !== 'simple') {
+                    text(ctx, `F = ${p.focal.toFixed(1)} cm  /  2F = ${(2 * p.focal).toFixed(1)} cm`, W - 18, this.worldY(0) + 42, 9, '#8fc2df', 'right');
+                }
+            }
+            // Rays. In "basic" mode show the textbook principal rays so students can
+            // connect F and 2F to the standard constructions. In "many" mode show a set
+            // of physically valid aperture rays.
+            if (s.rayMode === 'basic') {
+                const uY = 3.10, xObj = this.worldX(p.objectX), yObj = this.worldY(uY), xLens = this.worldX(p.lensX), yAxis = this.worldY(0);
+                const drawAnimated = (pts, color, alpha = .9, dashed = false) => {
+                    const prog = s.animationProgress === null ? 1 : s.animationProgress;
+                    const segs = [];
+                    let total = 0;
+                    for (let i = 0; i < pts.length - 1; i++) {
+                        const dx = pts[i + 1].x - pts[i].x, dy = pts[i + 1].y - pts[i].y, l = Math.hypot(dx, dy);
+                        segs.push(l);
+                        total += l;
+                    }
+                    let remaining = total * prog;
+                    ctx.globalAlpha = alpha;
+                    for (let i = 0; i < pts.length - 1; i++) {
+                        if (remaining <= 0)
+                            break;
+                        const a = pts[i], b = pts[i + 1], len = segs[i];
+                        if (remaining >= len) {
+                            strokeLine(ctx, a.x, a.y, b.x, b.y, color, 1.65, dashed);
+                            remaining -= len;
+                        }
+                        else {
+                            const t = len < 1e-6 ? 0 : remaining / len;
+                            strokeLine(ctx, a.x, a.y, a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, color, 1.65, dashed);
+                            remaining = 0;
+                        }
+                    }
+                    ctx.globalAlpha = 1;
+                };
+                const rayColors = ['#e3c66d', '#7ed8ea', '#eda083'];
+                const xRight = Math.min(W + 10, this.worldX(Math.min(p.lensX + Math.max(o.s + 12, p.focal * 2.6), p.lensX + 280)));
+                // 1) Parallel to the optical axis -> passes through the far focus after the lens.
+                const parallelY = uY;
+                const focus1 = [{ x: xObj, y: yObj }, { x: xLens, y: this.worldY(parallelY) }, { x: xRight, y: this.worldY(parallelY + (this.invX(xRight) - p.lensX) * (-parallelY / p.focal)) }];
+                drawAnimated(focus1, rayColors[0]);
+                // 2) Through the center of the lens -> approximately straight.
+                const centerSlope = (0 - uY) / o.a;
+                const center = [{ x: xObj, y: yObj }, { x: xLens, y: yAxis }, { x: xRight, y: this.worldY((this.invX(xRight) - p.lensX) * centerSlope) }];
+                drawAnimated(center, rayColors[1]);
+                // 3) Through the near focus before the lens -> emerges parallel to the axis.
+                if (Math.abs(o.a - p.focal) > .18) {
+                    const yAtLens = uY * (p.focal / (o.a - p.focal));
+                    const focusIn = [{ x: xObj, y: yObj }, { x: xLens, y: this.worldY(yAtLens) }, { x: xRight, y: this.worldY(yAtLens) }];
+                    drawAnimated(focusIn, rayColors[2]);
+                }
+                if (o.kind === 'virtual' && s.animationProgress === null && o.b !== null) {
+                    const xVirt = this.worldX(p.lensX + o.b), yVirt = this.worldY((o.m || 1) * uY);
+                    for (const [yLens, color, slope] of [
+                        [parallelY, rayColors[0], -parallelY / p.focal],
+                        [0, rayColors[1], centerSlope],
+                    ]) {
+                        const yBack = this.worldY(yLens + o.b * Number(slope));
+                        ctx.globalAlpha = .45;
+                        strokeLine(ctx, xLens, this.worldY(yLens), xVirt, yBack, color, 1, true);
+                        ctx.globalAlpha = 1;
+                    }
+                    if (Math.abs(o.a - p.focal) > .18) {
+                        const yAtLens = uY * (p.focal / (o.a - p.focal));
+                        ctx.globalAlpha = .45;
+                        strokeLine(ctx, xLens, this.worldY(yAtLens), xVirt, this.worldY(yAtLens), rayColors[2], 1, true);
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+            else if (s.rayMode === 'many') {
+                const r = LensLab.apertureSamples(32);
+                for (let i = 0; i < r.length; i++) {
+                    const qy = r[i].y * o.d / 2, uY = 3.10, tOut = (qy - uY) / o.a - qy / o.f;
+                    const x0 = this.worldX(p.objectX), y0 = this.worldY(uY), x1 = this.worldX(p.lensX), y1 = this.worldY(qy);
+                    let xe = p.screenX;
+                    if (o.kind === 'real' && o.b !== null && o.b > o.s)
+                        xe = Math.min(p.lensX + o.b, p.lensX + 280);
+                    const x2 = this.worldX(xe), y2 = this.worldY(qy + (xe - p.lensX) * tOut);
+                    const progression = s.animationProgress === null ? 1 : s.animationProgress;
+                    const drawSegment = (ax, ay, bx, by, color, alpha) => {
+                        ctx.globalAlpha = alpha;
+                        strokeLine(ctx, ax, ay, bx, by, color, .8);
+                        ctx.globalAlpha = 1;
+                    };
+                    const a0 = LensLab.clamp(progression * 2, 0, 1), a1 = LensLab.clamp((progression - .5) * 2, 0, 1);
+                    const rayColor = '#80d3e5';
+                    if (a0 > 0)
+                        drawSegment(x0, y0, x0 + (x1 - x0) * a0, y0 + (y1 - y0) * a0, rayColor, .23);
+                    if (a1 > 0)
+                        drawSegment(x1, y1, x1 + (x2 - x1) * a1, y1 + (y2 - y1) * a1, rayColor, .24);
+                }
+            }
+            // Object: reflect the selected object type in the side-view so the stage and
+            // screen image remain visually consistent. This is a teaching diagram rather than
+            // strict orthographic projection, so we draw a simplified upright silhouette.
+            const ox = this.worldX(p.objectX), lx = this.worldX(p.lensX), sx = this.worldX(p.screenX), base = this.worldY(0), top = this.worldY(3.1);
+            if (p.objectType === 'arrow') {
+                strokeLine(ctx, ox, base, ox, top + 7, '#f7b45f', 5);
+                ctx.fillStyle = '#f7b45f';
+                ctx.beginPath();
+                ctx.moveTo(ox, top - 7);
+                ctx.lineTo(ox - 8, top + 10);
+                ctx.lineTo(ox + 8, top + 10);
+                ctx.closePath();
+                ctx.fill();
+            }
+            else if (p.objectType === 'letterF') {
+                ctx.save();
+                ctx.fillStyle = '#d9eef8';
+                ctx.strokeStyle = '#72d9f5';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.roundRect(ox - 12, top + 6, 24, 18, 4);
+                ctx.fill();
+                ctx.stroke();
+                ctx.fillStyle = '#1f6b86';
+                ctx.font = '900 14px Arial,sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('F', ox, top + 15);
+                ctx.fillStyle = '#4db4d6';
+                ctx.fillRect(ox - 1, top + 24, 2, 16);
+                ctx.fillStyle = '#4c9bc0';
+                ctx.fillRect(ox - 9, top + 39, 18, 3);
+                ctx.restore();
+            }
+            else {
+                const bodyW = 14, bodyTop = top + 12, bodyBottom = base - 2;
+                ctx.fillStyle = '#eebd79';
+                ctx.fillRect(ox - bodyW / 2, bodyTop, bodyW, Math.max(16, bodyBottom - bodyTop));
+                ctx.fillStyle = '#f3a146';
+                ctx.beginPath();
+                ctx.moveTo(ox, top - 6);
+                ctx.bezierCurveTo(ox - 10, top + 7, ox - 8, top + 19, ox, top + 27);
+                ctx.bezierCurveTo(ox + 10, top + 19, ox + 10, top + 7, ox, top - 6);
+                ctx.fill();
+                ctx.fillStyle = '#fff0a1';
+                ctx.beginPath();
+                ctx.moveTo(ox, top + 3);
+                ctx.quadraticCurveTo(ox - 5, top + 12, ox, top + 17);
+                ctx.quadraticCurveTo(ox + 5, top + 12, ox, top + 3);
+                ctx.fill();
+                ctx.fillStyle = '#8b6b42';
+                ctx.fillRect(ox - 1, bodyTop - 2, 2, 5);
+            }
+            const diameterY = this.ppm * this.verticalRatio * p.diameter / 2;
+            const lensHalf = LensLab.clamp(diameterY * 1.22, 28, 170);
+            ctx.save();
+            ctx.shadowColor = '#59d8f5';
+            ctx.shadowBlur = 22;
+            const grad = ctx.createLinearGradient(lx - 24, base, lx + 24, base);
+            grad.addColorStop(0, '#4bb8da44');
+            grad.addColorStop(.5, '#9ff1ff55');
+            grad.addColorStop(1, '#4bb8da44');
+            ctx.fillStyle = grad;
+            ctx.strokeStyle = '#8be7ff';
+            ctx.lineWidth = 2.4;
+            ctx.beginPath();
+            ctx.moveTo(lx, base - lensHalf);
+            ctx.bezierCurveTo(lx + 20, base - lensHalf * .52, lx + 20, base + lensHalf * .52, lx, base + lensHalf);
+            ctx.bezierCurveTo(lx - 20, base + lensHalf * .52, lx - 20, base - lensHalf * .52, lx, base - lensHalf);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.strokeStyle = '#d9fbff66';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(lx, base - lensHalf + 8);
+            ctx.lineTo(lx, base + lensHalf - 8);
+            ctx.stroke();
+            ctx.restore();
+            ctx.save();
+            ctx.fillStyle = '#d6ecff1f';
+            ctx.strokeStyle = '#b8cce4';
+            ctx.lineWidth = 1.8;
+            ctx.fillRect(sx - 7, base - 92, 14, 184);
+            ctx.strokeRect(sx - 7, base - 92, 14, 184);
+            ctx.restore();
+            const previewY = -o.s / o.a * 3.1;
+            const yy = this.worldY(previewY), blurLength = LensLab.clamp(o.r * this.ppm * this.verticalRatio, 2, 60);
+            ctx.save();
+            ctx.globalAlpha = o.focus ? .95 : .45;
+            ctx.fillStyle = '#efa481';
+            ctx.fillRect(sx - 4, yy - blurLength / 2, 8, blurLength);
+            ctx.restore();
+            // annotation for ideal virtual image
+            if (o.kind === 'virtual' && o.b !== null) {
+                const vx = this.worldX(p.lensX + o.b), vy = this.worldY((o.m || 1) * 3.1);
+                ctx.save();
+                ctx.globalAlpha = .65;
+                strokeLine(ctx, vx, base, vx, vy, '#c79afb', 2.5, true);
+                text(ctx, '虚像', vx, vy - 10, 11, '#d4b3ff');
+                ctx.restore();
+            }
+            for (const [part, x, title, color] of [['object', ox, '物体', '#ffc88b'], ['lens', lx, '凸レンズ', '#8be4fc'], ['screen', sx, 'スクリーン', '#bed7ef']]) {
+                const selected = s.selected === part;
+                if (selected) {
+                    ctx.strokeStyle = '#80dcf960';
+                    ctx.lineWidth = 1.5;
+                    ctx.setLineDash([4, 4]);
+                    ctx.strokeRect(x - 20, base - 102, 40, 204);
+                    ctx.setLineDash([]);
+                }
+                text(ctx, title, LensLab.clamp(x, 48, W - 48), LensLab.clamp(base - 90, 42, 62), 11, color);
+                if (selected) {
+                    ctx.fillStyle = '#264f6e';
+                    ctx.strokeStyle = '#67d6f1';
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.roundRect(x - 19, base + 68, 38, 24, 10);
+                    ctx.fill();
+                    ctx.stroke();
+                    text(ctx, '↔', x, base + 85, 16, '#c4f2ff');
+                }
+            }
+            if (s.level !== 'simple') {
+                text(ctx, `${o.a.toFixed(1)} cm`, (ox + lx) / 2, base - 17, 10, '#c9d9ed');
+                text(ctx, `${o.s.toFixed(1)} cm`, (lx + sx) / 2, base - 17, 10, '#c9d9ed');
+            }
+            ctx.restore();
+        }
+        project3(x, y, z, center) {
+            const xVal = (x - center) * this.ppm, yVal = y * this.ppm * 1.26, zVal = z * this.ppm * 1.26;
+            const X = xVal * Math.cos(this.yaw) - zVal * Math.sin(this.yaw);
+            const depth = xVal * Math.sin(this.yaw) + zVal * Math.cos(this.yaw);
+            const Y = yVal * Math.cos(this.pitch) - depth * Math.sin(this.pitch);
+            const cameraDepth = yVal * Math.sin(this.pitch) + depth * Math.cos(this.pitch);
+            const perspective = LensLab.clamp(1 / (1 + cameraDepth / 960), .7, 1.45) * this.orbitScale;
+            return { x: this.width / 2 + X * perspective, y: this.height * .54 - Y * perspective };
+        }
+        draw3D(ctx, s, o) {
+            const p = s.physical, center = (p.objectX + p.screenX) / 2;
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, 0, this.width, this.height);
+            ctx.clip();
+            const P = (x, y, z) => this.project3(x, y, z, center);
+            // ground grid and optical axis
+            for (let zz = -8; zz <= 8; zz += 4) {
+                const a = P(p.objectX - 5, -5, zz), b = P(p.screenX + 5, -5, zz);
+                strokeLine(ctx, a.x, a.y, b.x, b.y, '#304960', .7);
+            }
+            for (let xx = Math.floor((p.objectX - 5) / 10) * 10; xx <= p.screenX + 5; xx += 10) {
+                const a = P(xx, -5, -8), b = P(xx, -5, 8);
+                strokeLine(ctx, a.x, a.y, b.x, b.y, '#304960', .7);
+            }
+            const axis1 = P(p.objectX - 7, 0, 0), axis2 = P(p.screenX + 7, 0, 0);
+            strokeLine(ctx, axis1.x, axis1.y, axis2.x, axis2.y, '#647b97', 1, true);
+            // screen planar texture. map image pixels to an affine approximation of a 3D rectangle.
+            const half = 7.25, A = P(p.screenX, half, -half), B = P(p.screenX, half, half), C = P(p.screenX, -half, -half), D = P(p.screenX, -half, half);
+            ctx.save();
+            ctx.fillStyle = '#193149bb';
+            ctx.strokeStyle = '#9ebdd3';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(A.x, A.y);
+            ctx.lineTo(B.x, B.y);
+            ctx.lineTo(D.x, D.y);
+            ctx.lineTo(C.x, C.y);
+            ctx.closePath();
+            ctx.fill();
+            ctx.clip();
+            ctx.setTransform((B.x - A.x) / SCREEN_SIZE, (B.y - A.y) / SCREEN_SIZE, (C.x - A.x) / SCREEN_SIZE, (C.y - A.y) / SCREEN_SIZE, A.x, A.y);
+            ctx.globalAlpha = .85;
+            ctx.drawImage(this.screenBuffer, 0, 0);
+            ctx.restore();
+            ctx.beginPath();
+            ctx.moveTo(A.x, A.y);
+            ctx.lineTo(B.x, B.y);
+            ctx.lineTo(D.x, D.y);
+            ctx.lineTo(C.x, C.y);
+            ctx.closePath();
+            ctx.stroke();
+            // rays through physically valid aperture samples in 3D
+            if (s.rayMode !== 'off') {
+                const aps = s.rayMode === 'basic' ? [{ y: -.78, z: 0 }, { y: 0, z: 0 }, { y: .78, z: 0 }] : LensLab.apertureSamples(56);
+                for (let i = 0; i < aps.length; i++) {
+                    const q = { y: aps[i].y * p.diameter / 2, z: aps[i].z * p.diameter / 2 };
+                    const u = { y: 3.1, z: 0 }, last = LensLab.projectRay(o, u, q);
+                    const a = P(p.objectX, u.y, u.z), b = P(p.lensX, q.y, q.z), c = P(p.screenX, last.y, last.z);
+                    const prog = s.animationProgress === null ? 1 : s.animationProgress;
+                    const first = LensLab.clamp(prog * 2, 0, 1), second = LensLab.clamp((prog - .5) * 2, 0, 1);
+                    ctx.globalAlpha = s.rayMode === 'many' ? .24 : .88;
+                    if (first > 0)
+                        strokeLine(ctx, a.x, a.y, a.x + (b.x - a.x) * first, a.y + (b.y - a.y) * first, s.rayMode === 'many' ? '#b1e3ed' : ['#f1bf75', '#6bdafa', '#dc9afe'][i], s.rayMode === 'many' ? .85 : 1.5);
+                    if (second > 0)
+                        strokeLine(ctx, b.x, b.y, b.x + (c.x - b.x) * second, b.y + (c.y - b.y) * second, s.rayMode === 'many' ? '#b1e3ed' : ['#f1bf75', '#6bdafa', '#dc9afe'][i], s.rayMode === 'many' ? .85 : 1.5);
+                    ctx.globalAlpha = 1;
+                }
+            }
+            // lens: circular aperture (yz plane)
+            const rings = 64;
+            ctx.beginPath();
+            for (let i = 0; i <= rings; i++) {
+                const ang = i * 2 * Math.PI / rings, pt = P(p.lensX, Math.sin(ang) * p.diameter / 2, Math.cos(ang) * p.diameter / 2);
+                if (i === 0)
+                    ctx.moveTo(pt.x, pt.y);
+                else
+                    ctx.lineTo(pt.x, pt.y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = '#4cc1e626';
+            ctx.strokeStyle = '#74dbf5';
+            ctx.lineWidth = 2;
+            ctx.fill();
+            ctx.stroke();
+            const base = P(p.objectX, 0, 0), top = P(p.objectX, 3.1, 0);
+            strokeLine(ctx, base.x, base.y, top.x, top.y, '#f5b663', 3.5);
+            const ax = P(p.objectX, 2.55, -.45), bx = P(p.objectX, 2.55, .45);
+            ctx.fillStyle = '#f6b663';
+            ctx.beginPath();
+            ctx.moveTo(top.x, top.y - 4);
+            ctx.lineTo(ax.x, ax.y + 6);
+            ctx.lineTo(bx.x, bx.y + 6);
+            ctx.closePath();
+            ctx.fill();
+            const label = (x, sn, color) => { const v = P(x, 5.2, 0); text(ctx, sn, v.x, v.y, 11, color); };
+            label(p.objectX, '物体', '#f8be81');
+            label(p.lensX, '凸レンズ', '#a1eeff');
+            label(p.screenX, 'スクリーン', '#d9e9fc');
+            // When observing from the screen side, the opaque screen hides the objects behind it.
+            if (this.yaw < -1.35) {
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(A.x, A.y);
+                ctx.lineTo(B.x, B.y);
+                ctx.lineTo(D.x, D.y);
+                ctx.lineTo(C.x, C.y);
+                ctx.closePath();
+                ctx.fillStyle = '#132740';
+                ctx.fill();
+                ctx.clip();
+                ctx.setTransform((B.x - A.x) / SCREEN_SIZE, (B.y - A.y) / SCREEN_SIZE, (C.x - A.x) / SCREEN_SIZE, (C.y - A.y) / SCREEN_SIZE, A.x, A.y);
+                ctx.drawImage(this.screenBuffer, 0, 0);
+                ctx.restore();
+                ctx.strokeStyle = '#a7c2df';
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.moveTo(A.x, A.y);
+                ctx.lineTo(B.x, B.y);
+                ctx.lineTo(D.x, D.y);
+                ctx.lineTo(C.x, C.y);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+    }
+    LensLab.DrawEngine = DrawEngine;
+})(LensLab || (LensLab = {}));
+var LensLab;
+(function (LensLab) {
+    class Application {
+        constructor() {
+            this.physical = { ...LensLab.DEFAULT };
+            this.level = 'simple';
+            this.rayMode = 'basic';
+            this.showFoci = false;
+            this.teacher = false;
+            this.suggestions = true;
+            this.mode = '2d';
+            this.virtualVisible = false;
+            this.selected = 'screen';
+            this.missionId = null;
+            this.missionHint = 0;
+            this.missionRevealed = false;
+            this.missionObserved = false;
+            this.completed = new Set();
+            this.freeSnapshot = null;
+            this.freeRay = 'basic';
+            this.freeMode = '2d';
+            this.animateStart = null;
+            this.raf = 0;
+            this.dirty = true;
+            this.screenDirty = true;
+            this.initialText = true;
+            this.pointers = new Map();
+            this.gesture = 'none';
+            this.startValue = 0;
+            this.oldPhysical = null;
+            this.panStartX = 0;
+            this.panStartY = 0;
+            this.downX = 0;
+            this.downY = 0;
+            this.downYaw = 0;
+            this.downPitch = 0;
+            this.pinchDistance = 0;
+            this.pinchCenter = { x: 0, y: 0 };
+            this.undoStack = [];
+            this.lastSuggestionAt = 0;
+            this.seenSuggestions = new Set();
+            this.currentSuggestion = '';
+            this.stage = this.el('stageCanvas');
+            this.screen = this.el('screenCanvas');
+            this.overlay = this.el('zoomCanvas');
+            this.load();
+            this.renderer = new LensLab.DrawEngine(this.stage);
+            this.renderer.fit(this.physical);
+            this.bind();
+            this.populateMissions();
+            this.updateUI();
+            this.requestDraw();
+            this.setText('versionLabel', 'α ' + VERSION.slice(1));
+            this.setText('versionFooter', 'α' + VERSION.slice(1));
+            // スマホではスクロールでアドレスバーが出入りするたびにresizeが起きるので、
+            // 横幅が変わったとき（回転など）だけ全体表示をやり直す
+            let lastWidth = window.innerWidth;
+            window.addEventListener('resize', () => {
+                this.renderer.resize();
+                if (window.innerWidth !== lastWidth) {
+                    lastWidth = window.innerWidth;
+                    this.renderer.fit(this.physical);
+                }
+                this.requestDraw();
+            });
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(() => { this.renderer.resize(); this.requestDraw(); }).observe(this.stage);
+            }
+        }
+        el(id) { const item = document.getElementById(id); if (!item)
+            throw new Error('missing ' + id); return item; }
+        setText(id, t) { this.el(id).textContent = t; }
+        setHTML(id, t) { this.el(id).innerHTML = t; }
+        addButton(id, fn) { this.el(id).addEventListener('click', fn); }
+        load() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('lens-lab:v1') || 'null');
+                if (!saved || saved.schemaVersion !== 1)
+                    return;
+                this.physical = LensLab.validatePhysical(saved.experiment);
+                const pref = saved.preferences || {};
+                this.level = ['simple', 'numeric', 'advanced'].includes(pref.learningLevel) ? pref.learningLevel : 'simple';
+                this.rayMode = ['off', 'basic', 'many'].includes(pref.rayMode) ? pref.rayMode : 'basic';
+                this.suggestions = pref.suggestionsEnabled !== false;
+                this.teacher = pref.teacherMode === true;
+                this.showFoci = pref.showFoci === true;
+                const ids = saved.learning?.completedMissionIds || [];
+                if (Array.isArray(ids))
+                    for (const id of ids)
+                        if (LensLab.MISSIONS.some(m => m.id === id))
+                            this.completed.add(id);
+            }
+            catch {
+                this.physical = { ...LensLab.DEFAULT };
+            }
+        }
+        save() {
+            try {
+                localStorage.setItem('lens-lab:v1', JSON.stringify({ schemaVersion: 1, savedAt: new Date().toISOString(), experiment: this.physical,
+                    preferences: { learningLevel: this.level, rayMode: this.rayMode, suggestionsEnabled: this.suggestions, teacherMode: this.teacher, showFoci: this.showFoci },
+                    learning: { completedMissionIds: Array.from(this.completed) } }));
+            }
+            catch {
+                this.toast('このブラウザでは学習内容を保存できません。実験は続けられます。');
+            }
+        }
+        toast(msg) { const e = this.el('toast'); e.textContent = msg; e.classList.remove('hidden'); window.setTimeout(() => e.classList.add('hidden'), 2400); }
+        pushUndo(previous) { if (JSON.stringify(previous) === JSON.stringify(this.physical))
+            return; this.undoStack.push({ ...previous }); if (this.undoStack.length > 30)
+            this.undoStack.shift(); }
+        changePhysical(next, commit = true) {
+            const valid = LensLab.validatePhysical(next);
+            if (JSON.stringify(valid) === JSON.stringify(this.physical))
+                return;
+            if (commit)
+                this.pushUndo(this.physical);
+            this.physical = valid;
+            if (this.animateStart !== null)
+                this.animateStart = null;
+            if (this.virtualVisible && LensLab.evaluate(valid).kind !== 'virtual')
+                this.virtualVisible = false;
+            this.dirty = true;
+            this.screenDirty = true;
+            this.updateUI();
+            this.requestDraw();
+            if (commit)
+                this.afterEdit();
+        }
+        afterEdit() { this.save(); this.evaluateProgress(); this.offerSuggestion(); this.updateUI(); }
+        bind() {
+            this.addButton('freeTab', () => this.exitMission());
+            this.addButton('missionTab', () => { if (!this.missionId)
+                this.startMission('M1');
+            else
+                this.updateUI(); });
+            this.addButton('exitMissionBtn', () => this.exitMission());
+            this.addButton('view2d', () => this.changeMode('2d'));
+            this.addButton('view3d', () => this.changeMode('3d'));
+            this.addButton('fitBtn', () => { if (this.mode === '3d') {
+                this.renderer.orbitScale = 1;
+                this.renderer.yaw = .65;
+                this.renderer.pitch = .34;
+            }
+            else
+                this.renderer.fit(this.physical); this.requestDraw(); });
+            this.addButton('eyeSide', () => { this.renderer.yaw = 0; this.renderer.pitch = 0; this.requestDraw(); });
+            this.addButton('eyeAngle', () => { this.renderer.yaw = .65; this.renderer.pitch = .34; this.requestDraw(); });
+            this.addButton('eyeScreen', () => { this.renderer.yaw = -Math.PI / 2; this.renderer.pitch = 0; this.requestDraw(); });
+            this.addButton('undoBtn', () => { const prev = this.undoStack.pop(); if (prev) {
+                this.physical = prev;
+                this.afterEdit();
+                this.updateUI();
+                this.requestDraw();
+            } });
+            this.addButton('resetBtn', () => {
+                if (!window.confirm('実験条件を初期状態に戻しますか？（ミッションの達成記録は残ります）'))
+                    return;
+                this.changePhysical({ ...LensLab.DEFAULT });
+                this.renderer.fit(this.physical);
+            });
+            for (const [name, part] of [['pickObject', 'object'], ['pickLens', 'lens'], ['pickScreen', 'screen']]) {
+                this.addButton(name, () => { this.selected = part; this.updateUI(); this.requestDraw(); });
+            }
+            // −0.5／＋0.5 は長押しで連続移動（スマホで細かく合わせやすくする）
+            for (const [name, step] of [['minusBtn', -.5], ['plusBtn', .5]]) {
+                const btn = this.el(name);
+                let timer = 0, repeated = false;
+                const stop = () => { window.clearTimeout(timer); window.clearInterval(timer); timer = 0; };
+                btn.addEventListener('pointerdown', () => {
+                    repeated = false;
+                    stop();
+                    timer = window.setTimeout(() => { repeated = true; timer = window.setInterval(() => this.moveSelected(step), 90); }, 400);
+                });
+                for (const ev of ['pointerup', 'pointerleave', 'pointercancel'])
+                    btn.addEventListener(ev, stop);
+                btn.addEventListener('contextmenu', e => e.preventDefault());
+                btn.addEventListener('click', () => { if (repeated) {
+                    repeated = false;
+                    return;
+                } this.moveSelected(step); });
+            }
+            this.addButton('objArrow', () => this.changePhysical({ ...this.physical, objectType: 'arrow' }));
+            this.addButton('objLetter', () => this.changePhysical({ ...this.physical, objectType: 'letterF' }));
+            this.addButton('objCandle', () => this.changePhysical({ ...this.physical, objectType: 'candle' }));
+            for (const [name, value] of [['rayOff', 'off'], ['rayBasic', 'basic'], ['rayMany', 'many']]) {
+                this.addButton(name, () => { this.rayMode = value; this.updateUI(); this.save(); this.requestDraw(); this.evaluateProgress(); });
+            }
+            for (const [name, value] of [['levelSimple', 'simple'], ['levelNumeric', 'numeric'], ['levelAdvanced', 'advanced']]) {
+                this.addButton(name, () => { this.level = value; this.updateUI(); this.save(); this.requestDraw(); });
+            }
+            this.el('focalRange').addEventListener('input', e => { this.changePhysical({ ...this.physical, focal: Number(e.target.value) }, false); });
+            this.el('focalRange').addEventListener('change', () => this.afterEdit());
+            this.el('diameterRange').addEventListener('input', e => { this.changePhysical({ ...this.physical, diameter: Number(e.target.value) }, false); });
+            this.el('diameterRange').addEventListener('change', () => this.afterEdit());
+            this.el('teacherMode').addEventListener('change', e => { this.teacher = e.target.checked; this.updateUI(); this.save(); });
+            this.el('showFoci').addEventListener('change', e => { this.showFoci = e.target.checked; this.updateUI(); this.save(); this.requestDraw(); });
+            this.el('suggestionsEnabled').addEventListener('change', e => { this.suggestions = e.target.checked; this.updateUI(); this.save(); });
+            this.addButton('animateBtn', () => {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    this.toast('端末の動きを減らす設定に従い、静止光線を表示します。');
+                    return;
+                }
+                if (this.rayMode === 'off') {
+                    this.rayMode = 'basic';
+                    this.updateUI();
+                }
+                this.animateStart = performance.now();
+                this.requestDraw();
+            });
+            this.addButton('suggestionClose', () => { this.el('suggestion').classList.add('hidden'); });
+            this.addButton('toggleVirtualBtn', () => { this.virtualVisible = !this.virtualVisible; this.updateUI(); this.requestDraw(); this.evaluateProgress(); });
+            this.addButton('screenZoomBtn', () => { this.el('zoomOverlay').classList.remove('hidden'); this.requestDraw(); });
+            this.addButton('closeOverlay', () => this.el('zoomOverlay').classList.add('hidden'));
+            this.addButton('missionHintBtn', () => { this.missionHint = Math.min(2, this.missionHint + 1); this.updateMissionPanel(); });
+            this.addButton('missionObserveBtn', () => { this.missionObserved = true; this.evaluateProgress(true); this.updateMissionPanel(); });
+            this.addButton('missionRevealBtn', () => { this.missionRevealed = !this.missionRevealed; this.updateMissionPanel(); });
+            this.stage.addEventListener('pointerdown', e => this.pointerDown(e));
+            this.stage.addEventListener('pointermove', e => this.pointerMove(e));
+            this.stage.addEventListener('pointerup', e => this.pointerUp(e));
+            this.stage.addEventListener('pointercancel', e => this.pointerUp(e));
+            this.stage.addEventListener('wheel', e => { e.preventDefault(); if (this.mode === '3d') {
+                this.renderer.orbitScale = LensLab.clamp(this.renderer.orbitScale * Math.exp(-e.deltaY * .0015), .5, 3);
+            }
+            else {
+                const pt = this.mousePoint(e);
+                this.renderer.zoomBy(Math.exp(-e.deltaY * .0015), pt.x, pt.y);
+            } this.requestDraw(); }, { passive: false });
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape')
+                    this.el('zoomOverlay').classList.add('hidden');
+                if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) {
+                    e.preventDefault();
+                    this.moveSelected(e.key === 'ArrowLeft' ? -.5 : .5);
+                }
+            });
+        }
+        moveSelected(d) { const p = this.physical; const x = this.selected === 'object' ? p.objectX : this.selected === 'lens' ? p.lensX : p.screenX; this.changePhysical(LensLab.movePart(p, this.selected, x + d)); }
+        mousePoint(e) { const r = this.stage.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+        pointerDown(e) {
+            if (e.button !== 0 && e.pointerType === 'mouse')
+                return;
+            e.preventDefault();
+            this.stage.setPointerCapture(e.pointerId);
+            const pt = this.mousePoint(e);
+            this.pointers.set(e.pointerId, pt);
+            if (this.pointers.size >= 2) {
+                const [a, b] = Array.from(this.pointers.values());
+                this.gesture = this.mode === '2d' ? 'pinch' : 'pinch3d';
+                this.pinchDistance = Math.hypot(a.x - b.x, a.y - b.y);
+                this.pinchCenter = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+                return;
+            }
+            this.downX = pt.x;
+            this.downY = pt.y;
+            this.panStartX = this.renderer.panX;
+            this.panStartY = this.renderer.panY;
+            if (this.mode === '3d') {
+                this.gesture = 'orbit';
+                this.downYaw = this.renderer.yaw;
+                this.downPitch = this.renderer.pitch;
+                return;
+            }
+            const world = this.renderer;
+            const parts = [['object', this.physical.objectX], ['lens', this.physical.lensX], ['screen', this.physical.screenX]];
+            // 指はマウスより太いので、タッチ時はつかめる範囲を広げる
+            const hit = e.pointerType === 'mouse' ? 25 : 40;
+            const candidates = parts.map(([part, x]) => ({ part, d: Math.abs(world.worldX(x) - pt.x) })).filter(c => c.d < hit);
+            const closest = candidates.sort((a, b) => a.d - b.d)[0];
+            if (closest && Math.abs(pt.y - world.worldY(0)) < 150) {
+                this.gesture = 'part';
+                this.selected = closest.part;
+                this.oldPhysical = { ...this.physical };
+                this.startValue = this.selected === 'object' ? this.physical.objectX : this.selected === 'lens' ? this.physical.lensX : this.physical.screenX;
+                this.updateUI();
+                this.requestDraw();
+            }
+            else
+                this.gesture = 'pan';
+        }
+        pointerMove(e) {
+            if (!this.pointers.has(e.pointerId))
+                return;
+            e.preventDefault();
+            const pt = this.mousePoint(e);
+            this.pointers.set(e.pointerId, pt);
+            if (this.pointers.size >= 2) {
+                const [a, b] = Array.from(this.pointers.values());
+                const distance = Math.hypot(a.x - b.x, a.y - b.y);
+                if (this.mode === '3d') {
+                    if (this.pinchDistance > 0)
+                        this.renderer.orbitScale = LensLab.clamp(this.renderer.orbitScale * distance / this.pinchDistance, .5, 3);
+                    this.pinchDistance = distance;
+                    this.requestDraw();
+                    return;
+                }
+                const center = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+                if (this.pinchDistance > 0)
+                    this.renderer.zoomBy(distance / this.pinchDistance, center.x, center.y);
+                this.renderer.panX += center.x - this.pinchCenter.x;
+                this.renderer.panY += center.y - this.pinchCenter.y;
+                this.pinchDistance = distance;
+                this.pinchCenter = center;
+                this.requestDraw();
+                return;
+            }
+            if (this.gesture === 'orbit') {
+                this.renderer.yaw = this.downYaw + (pt.x - this.downX) * .011;
+                this.renderer.pitch = LensLab.clamp(this.downPitch - (pt.y - this.downY) * .007, -1.0, 1.0);
+                this.requestDraw();
+                return;
+            }
+            if (this.gesture === 'pan') {
+                this.renderer.panX = this.panStartX + pt.x - this.downX;
+                this.renderer.panY = this.panStartY + pt.y - this.downY;
+                this.requestDraw();
+                return;
+            }
+            if (this.gesture === 'part') {
+                const worldChange = (pt.x - this.downX) / this.renderer.ppm;
+                this.changePhysical(LensLab.movePart(this.physical, this.selected, this.startValue + worldChange), false);
+            }
+        }
+        pointerUp(e) {
+            if (!this.pointers.has(e.pointerId))
+                return;
+            const wasPart = this.gesture === 'part', before = this.oldPhysical;
+            this.pointers.delete(e.pointerId);
+            if (this.pointers.size === 0) {
+                this.gesture = 'none';
+                this.pinchDistance = 0;
+                if (wasPart && before) {
+                    this.pushUndo(before);
+                    this.afterEdit();
+                }
+                else if (this.mode === '3d')
+                    this.evaluateProgress();
+                this.oldPhysical = null;
+            }
+            else {
+                this.gesture = this.pointers.size > 1 ? (this.mode === '3d' ? 'pinch3d' : 'pinch') : 'none';
+            }
+        }
+        changeMode(mode) {
+            this.mode = mode;
+            this.virtualVisible = false;
+            this.updateUI();
+            this.requestDraw();
+            this.evaluateProgress();
+        }
+        populateMissions() {
+            const row = this.el('missionList');
+            row.innerHTML = '';
+            for (const m of LensLab.MISSIONS) {
+                const b = document.createElement('button');
+                b.className = 'mission-btn';
+                b.dataset.id = m.id;
+                b.textContent = (m.id === 'B1' ? '3D' : m.id) + ' ' + m.title.replace(/[！!？?]/g, '');
+                b.addEventListener('click', () => this.startMission(m.id));
+                row.appendChild(b);
+            }
+        }
+        startMission(id) {
+            if (!this.missionId) {
+                this.freeSnapshot = { ...this.physical };
+                this.freeRay = this.rayMode;
+                this.freeMode = this.mode;
+            }
+            const old = this.physical;
+            const base = { ...LensLab.DEFAULT, screenX: 18, objectX: -30 };
+            if (id === 'M2') {
+                base.objectType = 'letterF';
+                base.screenX = 15;
+                this.rayMode = 'basic';
+            }
+            else if (id === 'M3') {
+                base.objectX = -30;
+                base.screenX = 18;
+            }
+            else if (id === 'M4') {
+                base.objectX = -25;
+                base.screenX = 18;
+            }
+            else if (id === 'M5') {
+                base.objectX = -15;
+                base.screenX = 18;
+            }
+            else if (id === 'B1') {
+                base.screenX = 15;
+                this.rayMode = 'basic';
+            }
+            this.physical = base;
+            this.pushUndo(old);
+            this.missionId = id;
+            this.missionHint = 0;
+            this.missionRevealed = false;
+            this.missionObserved = false;
+            this.virtualVisible = false;
+            this.mode = '2d';
+            this.renderer.fit(this.physical);
+            this.updateUI();
+            this.requestDraw();
+        }
+        exitMission() {
+            if (this.missionId) {
+                this.missionId = null;
+                this.missionObserved = false;
+                this.missionRevealed = false;
+                if (this.freeSnapshot) {
+                    this.physical = this.freeSnapshot;
+                    this.freeSnapshot = null;
+                    this.rayMode = this.freeRay;
+                    this.mode = this.freeMode;
+                }
+            }
+            this.updateUI();
+            this.requestDraw();
+            this.save();
+        }
+        evaluateProgress(fromObserve = false) {
+            if (!this.missionId)
+                return;
+            const o = LensLab.evaluate(this.physical), ready = LensLab.missionCondition(this.missionId, o, this.rayMode, this.mode, this.virtualVisible, this.renderer.yaw);
+            const requiresSeen = ['M2', 'M5', 'B1'].includes(this.missionId);
+            if (ready && (!requiresSeen || this.missionObserved) && !this.completed.has(this.missionId)) {
+                this.completed.add(this.missionId);
+                this.save();
+                if (!this.teacher)
+                    this.toast('ミッション達成！ そのまま実験を続けられます。');
+            }
+            else if (fromObserve && !ready && !this.teacher) {
+                this.toast('もう少し条件を確かめてみよう。');
+            }
+            this.updateMissionPanel();
+        }
+        updateMissionPanel() {
+            if (!this.missionId)
+                return;
+            const id = this.missionId, m = LensLab.MISSIONS.find(m => m.id === id);
+            this.setText('missionProgress', `達成済み ${this.completed.size}/6　・　推奨順は M1 → M5 → 3D（全て選択可能）`);
+            this.setText('missionTitle', m.title);
+            this.setText('missionDesc', m.subtitle);
+            for (const btn of Array.from(this.el('missionList').children)) {
+                btn.classList.toggle('active', btn.dataset.id === id);
+                btn.classList.toggle('done', this.completed.has(btn.dataset.id));
+            }
+            const condition = LensLab.missionCondition(id, LensLab.evaluate(this.physical), this.rayMode, this.mode, this.virtualVisible, this.renderer.yaw);
+            this.el('missionObserveBtn').classList.toggle('hidden', !['M2', 'M5', 'B1'].includes(id));
+            this.el('missionObserveBtn').disabled = !condition;
+            this.el('missionRevealBtn').classList.toggle('hidden', !this.teacher);
+            const extra = this.el('missionExtra');
+            extra.innerHTML = '';
+            if (this.missionHint > 0) {
+                const div = document.createElement('div');
+                div.className = 'mission-hint';
+                div.textContent = this.missionHint === 1 ? m.hint1 : m.hint2;
+                extra.appendChild(div);
+            }
+            if (this.completed.has(id) && (!this.teacher || this.missionRevealed)) {
+                const div = document.createElement('div');
+                div.className = 'mission-result';
+                div.textContent = '✓ 達成！ ' + m.summary;
+                extra.appendChild(div);
+            }
+            else if (!this.teacher && condition && !this.missionObserved && ['M2', 'M5', 'B1'].includes(id)) {
+                const div = document.createElement('div');
+                div.className = 'mission-hint';
+                div.textContent = '条件がそろいました。観察できたら「観察した」を押しましょう。';
+                extra.appendChild(div);
+            }
+        }
+        offerSuggestion() {
+            if (this.missionId || this.teacher || !this.suggestions)
+                return;
+            const o = LensLab.evaluate(this.physical), now = Date.now();
+            if (now - this.lastSuggestionAt < 45000)
+                return;
+            let key = '', content = '';
+            if (o.kind === 'virtual') {
+                key = 'virtual';
+                content = '焦点より内側ではスクリーンに鮮明な像ができません。レンズ越しに見てみよう。';
+            }
+            else if (o.focus) {
+                key = 'focus';
+                content = '像がくっきり！ なぜ今の位置でピントが合うのか、光線を表示してみよう。';
+            }
+            else if (o.m !== null && Math.abs(Math.abs(o.m) - 1) < .07) {
+                key = 'same';
+                content = '同じ大きさの像に近づきました。「2F」の位置に注目してみよう。';
+            }
+            if (key && !this.seenSuggestions.has(key)) {
+                this.seenSuggestions.add(key);
+                this.lastSuggestionAt = now;
+                this.currentSuggestion = content;
+                this.setText('suggestionText', content);
+                this.el('suggestion').classList.remove('hidden');
+            }
+        }
+        updateUI() {
+            const p = this.physical, o = LensLab.evaluate(p), isMission = !!this.missionId;
+            for (const [id, on] of [['freeTab', !isMission], ['missionTab', isMission], ['view2d', this.mode === '2d'], ['view3d', this.mode === '3d'],
+                ['rayOff', this.rayMode === 'off'], ['rayBasic', this.rayMode === 'basic'], ['rayMany', this.rayMode === 'many'],
+                ['pickObject', this.selected === 'object'], ['pickLens', this.selected === 'lens'], ['pickScreen', this.selected === 'screen'],
+                ['levelSimple', this.level === 'simple'], ['levelNumeric', this.level === 'numeric'], ['levelAdvanced', this.level === 'advanced']]) {
+                this.el(id).classList.toggle('active', on);
+            }
+            this.el('missionPanel').classList.toggle('hidden', !isMission);
+            this.el('suggestion').classList.toggle('hidden', isMission || this.teacher || !this.suggestions);
+            this.el('advancedArea').classList.toggle('hidden', this.level !== 'advanced');
+            this.el('threeControls').classList.toggle('hidden', this.mode !== '3d');
+            this.el('formulaPanel').classList.toggle('hidden', this.level !== 'advanced');
+            for (const id of ['metricA', 'metricS', 'metricF', 'metricB', 'metricM'])
+                this.el(id).classList.toggle('hidden', this.level === 'simple');
+            this.el('objArrow').classList.toggle('selected', p.objectType === 'arrow');
+            this.el('objLetter').classList.toggle('selected', p.objectType === 'letterF');
+            this.el('objCandle').classList.toggle('selected', p.objectType === 'candle');
+            this.el('focalRange').value = String(p.focal);
+            this.el('diameterRange').value = String(p.diameter);
+            this.el('teacherMode').checked = this.teacher;
+            this.el('showFoci').checked = this.showFoci;
+            this.el('suggestionsEnabled').checked = this.suggestions;
+            this.setText('focalValue', p.focal.toFixed(1) + ' cm');
+            this.setText('diameterValue', p.diameter.toFixed(1) + ' cm');
+            this.setText('aValue', o.a.toFixed(1) + ' cm');
+            this.setText('sValue', o.s.toFixed(1) + ' cm');
+            this.setText('miniF', o.f.toFixed(1) + ' cm');
+            this.setText('bValue', o.b === null ? '無限遠' : o.kind === 'virtual' ? '物体側 ' + Math.abs(o.b).toFixed(1) + ' cm' : o.b.toFixed(1) + ' cm');
+            this.setText('mValue', o.m === null ? '—' : Math.abs(o.m).toFixed(2) + ' 倍 ' + (o.m < 0 ? '(倒立)' : '(正立)'));
+            this.setText('selectedLabel', { object: '物体', lens: 'レンズ', screen: 'スクリーン' }[this.selected] + ' 選択中');
+            this.setText('stageStatus', this.mode === '2d' ? '凸レンズ・側面図' : '立体光線・観察モード');
+            this.setText('scaleStatus', this.mode === '2d' ? '縦寸法は見やすく拡大' : 'ドラッグして視点回転');
+            this.setText('stageHelper', this.mode === '2d' ? '☝ 装置ドラッグ / 背景移動 / ピンチ拡大' : '☝ ドラッグして斜めから観察');
+            const rayLegend = this.el('rayLegend');
+            if (this.rayMode === 'off') {
+                rayLegend.innerHTML = '光線は非表示です。まずはスクリーン像の変化を観察してみましょう。';
+            }
+            else if (this.rayMode === 'basic') {
+                rayLegend.innerHTML = '<strong>基本3本</strong><br><span class="sw y"></span>平行な光 → レンズの後で <strong>焦点 F</strong> を通る<br><span class="sw b"></span>レンズの中心を通る光 → <strong>そのまま直進</strong><br><span class="sw o"></span>手前の焦点 F を通る光 → レンズの後で <strong>光軸に平行</strong>';
+            }
+            else {
+                rayLegend.innerHTML = '<strong>多数の光線</strong><br><span class="sw m"></span>物体の一点からたくさんの光が広がり、レンズを通って像の一点に集まる様子を見られます。';
+            }
+            this.el('toggleVirtualBtn').disabled = o.kind !== 'virtual';
+            this.setText('toggleVirtualBtn', this.virtualVisible ? 'スクリーンへ戻す' : 'レンズ越し観察');
+            this.setText('screenSubtitle', this.virtualVisible ? '虚像の模式表示（スクリーン像ではありません）' : 'スクリーンを正面から見た様子');
+            const pill = this.el('focusPill');
+            pill.classList.remove('out', 'virtual');
+            if (this.virtualVisible && o.kind === 'virtual') {
+                pill.textContent = '◈ 正立・拡大の虚像';
+                pill.classList.add('virtual');
+            }
+            else if (o.kind !== 'real') {
+                pill.textContent = o.kind === 'infinity' ? '∞ 有限位置に結像しない' : '◈ スクリーンに実像なし';
+                pill.classList.add('virtual');
+            }
+            else if (o.focus) {
+                pill.textContent = '✓ ピントが合っている';
+            }
+            else {
+                pill.textContent = '◌ ピントがずれている';
+                pill.classList.add('out');
+            }
+            const desc = o.kind === 'infinity' ? '出射光は平行になり、有限の位置には像を結びません。' : o.kind === 'virtual' ? '焦点より内側。スクリーンにはぼけた光が届き、鮮明な実像にはなりません。' : o.focus ? '光がスクリーン上に集まっています。' : 'スクリーン位置と実像の位置が異なります。';
+            this.setText('shortDescribe', desc);
+            const desc2 = this.virtualVisible ? 'これはレンズを通して見える虚像の模式図です。スクリーンに映った像ではありません。' : o.kind === 'real' && o.b !== null ? `実像はレンズから ${o.b.toFixed(1)} cm の位置。スクリーンは ${o.s.toFixed(1)} cm です。` : desc;
+            this.setText('screenExplain', desc2);
+            this.setText('formulaNumbers', `物体距離 a = ${o.a.toFixed(2)} cm ／ スクリーン距離 s = ${o.s.toFixed(2)} cm\nぼけ半径 r = (D/2) × |1+s/a−s/f| = ${o.r.toFixed(3)} cm`);
+            this.el('formulaNumbers').setAttribute('style', 'white-space:pre-line;margin:8px 0;font-size:11px;color:#a5c6df');
+            this.el('undoBtn').toggleAttribute('disabled', this.undoStack.length === 0);
+            if (isMission)
+                this.updateMissionPanel();
+        }
+        requestDraw() { this.dirty = true; if (this.raf)
+            return; this.raf = requestAnimationFrame(t => this.draw(t)); }
+        draw(t) {
+            this.raf = 0;
+            let progress = null;
+            if (this.animateStart !== null) {
+                progress = LensLab.clamp((t - this.animateStart) / 1500, 0, 1);
+                if (progress >= 1) {
+                    this.animateStart = null;
+                    progress = null;
+                }
+            }
+            this.renderer.render({ physical: this.physical, rayMode: this.rayMode, level: this.level, showFoci: this.showFoci, selected: this.selected, mode: this.mode, virtualVisible: this.virtualVisible, animationProgress: progress });
+            const view = this.virtualVisible ? this.renderer.virtualBuffer : this.renderer.screenBuffer;
+            for (const el of [this.screen, this.overlay]) {
+                const c = el.getContext('2d');
+                c.clearRect(0, 0, el.width, el.height);
+                c.drawImage(view, 0, 0, el.width, el.height);
+            }
+            if (this.animateStart !== null)
+                this.requestDraw();
+        }
+    }
+    if (typeof document !== 'undefined')
+        document.addEventListener('DOMContentLoaded', () => new Application());
+})(LensLab || (LensLab = {}));
+</script>
+</body></html>
