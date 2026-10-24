@@ -65,7 +65,7 @@
 <div id="zoomOverlay" class="hidden" style="position:fixed;inset:0;background:#060d19f5;z-index:9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px"><div style="display:flex;justify-content:space-between;width:min(90vw,560px)"><strong>スクリーン拡大観察</strong><button class="action" id="closeOverlay">閉じる ×</button></div><canvas id="zoomCanvas" width="192" height="192" style="width:min(90vw,560px);aspect-ratio:1;object-fit:contain;background:#111e30;border:1px solid #33516c;border-radius:14px"></canvas></div>
 <div id="toast" class="toast hidden"></div>
 <script>"use strict";
-const VERSION = 'v0.1.6';
+const VERSION = 'v0.1.7';
 // 古いiOS Safari（15以前）にはroundRectが無く、描画が止まってしまうため補う
 if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -641,15 +641,24 @@ var LensLab;
                 ctx.fillRect(ox - 1, bodyTop - 2, 2, 5);
             }
             const diameterY = this.ppm * this.verticalRatio * p.diameter / 2;
-            let lensHalf = LensLab.clamp(diameterY * 1.22, 28, 170);
-            // 基本3本の光線（教科書の作図）はレンズ直径に関係なくレンズ面で曲がるので、
-            // 光線が当たる高さまでレンズを伸ばして「レンズの外で曲がる」見た目を防ぐ
+            // レンズは直径Dどおりの大きさで描く（表示の都合で伸び縮みさせない）
+            const lensHalf = Math.max(4, diameterY);
+            const bulge = Math.min(20, lensHalf * .55);
+            // 基本3本の光線は教科書の作図と同じく「レンズの中心線」で曲げて描く。
+            // レンズの外側を通る光線があるときは、中心線を点線で延長して作図線であることを示す
             if (s.rayMode === 'basic') {
                 let reach = 3.1;
                 if (Math.abs(o.a - p.focal) > .18)
                     reach = Math.max(reach, Math.abs(3.1 * p.focal / (o.a - p.focal)));
-                const need = reach * this.ppm * this.verticalRatio + 12;
-                lensHalf = Math.max(lensHalf, Math.min(need, H * .46));
+                const need = reach * this.ppm * this.verticalRatio + 10;
+                if (need > lensHalf) {
+                    const ext = Math.min(need, H);
+                    ctx.save();
+                    ctx.globalAlpha = .55;
+                    strokeLine(ctx, lx, base - ext, lx, base - lensHalf, '#8be7ff', 1.2, true);
+                    strokeLine(ctx, lx, base + lensHalf, lx, base + ext, '#8be7ff', 1.2, true);
+                    ctx.restore();
+                }
             }
             ctx.save();
             ctx.shadowColor = '#59d8f5';
@@ -663,16 +672,16 @@ var LensLab;
             ctx.lineWidth = 2.4;
             ctx.beginPath();
             ctx.moveTo(lx, base - lensHalf);
-            ctx.bezierCurveTo(lx + 20, base - lensHalf * .52, lx + 20, base + lensHalf * .52, lx, base + lensHalf);
-            ctx.bezierCurveTo(lx - 20, base + lensHalf * .52, lx - 20, base - lensHalf * .52, lx, base - lensHalf);
+            ctx.bezierCurveTo(lx + bulge, base - lensHalf * .52, lx + bulge, base + lensHalf * .52, lx, base + lensHalf);
+            ctx.bezierCurveTo(lx - bulge, base + lensHalf * .52, lx - bulge, base - lensHalf * .52, lx, base - lensHalf);
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
             ctx.strokeStyle = '#d9fbff66';
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(lx, base - lensHalf + 8);
-            ctx.lineTo(lx, base + lensHalf - 8);
+            ctx.moveTo(lx, base - lensHalf * .8);
+            ctx.lineTo(lx, base + lensHalf * .8);
             ctx.stroke();
             ctx.restore();
             ctx.save();
@@ -1390,7 +1399,7 @@ var LensLab;
                 rayLegend.innerHTML = '光線は非表示です。まずはスクリーン像の変化を観察してみましょう。';
             }
             else if (this.rayMode === 'basic') {
-                rayLegend.innerHTML = '<strong>基本3本</strong><br><span class="sw y"></span>平行な光 → レンズの後で <strong>焦点 F</strong> を通る<br><span class="sw b"></span>レンズの中心を通る光 → <strong>そのまま直進</strong><br><span class="sw o"></span>手前の焦点 F を通る光 → レンズの後で <strong>光軸に平行</strong>';
+                rayLegend.innerHTML = '<strong>基本3本</strong><br><span class="sw y"></span>平行な光 → レンズの後で <strong>焦点 F</strong> を通る<br><span class="sw b"></span>レンズの中心を通る光 → <strong>そのまま直進</strong><br><span class="sw o"></span>手前の焦点 F を通る光 → レンズの後で <strong>光軸に平行</strong><br><span style="color:#8fb3cc">※ レンズの外側を通る光線は、教科書と同じくレンズの中心線を点線で延ばして作図しています（実際のレンズの外を通る光は曲がりません）</span>';
             }
             else {
                 rayLegend.innerHTML = '<strong>多数の光線</strong><br><span class="sw m"></span>物体の一点からたくさんの光が広がり、レンズを通って像の一点に集まる様子を見られます。';
